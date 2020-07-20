@@ -10,7 +10,6 @@
             <tr>
                 <th>Nom du site WEB</th>
                 <th>Nom de la Société*</th>
-                <th>Annonce</th>
                 <th>Contacte</th>
                 <th>Date de Candidature</th>
                 <th>Date de Relance</th>
@@ -25,7 +24,6 @@
         {% for application in applications %}
                 <td>{{ application.webSiteName }}</td>
                 <td>{{ application.companyName }}</td>
-                <td>{{ application.jobAdvertisement }}</td>
                 <td>{{ application.contact }}</td>
                 <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>

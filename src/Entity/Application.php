@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ApplicationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=ApplicationRepository::class)
  */
@@ -127,6 +128,7 @@ class Application
 
     public function setPostingDate(\DateTimeInterface $postingDate): self
     {
+       // $postingDate=date('H:m:s j, F, Y');
         $this->postingDate = $postingDate;
 
         return $this;
