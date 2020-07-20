@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Application{% endblock %}
+
+{% block body %}
+    <h1>Application</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ application.id }}</td>
+            </tr>
+            <tr>
+                <th>WebSiteName</th>
+                <td>{{ application.webSiteName }}</td>
+            </tr>
+            <tr>
+                <th>CompanyName</th>
+                <td>{{ application.companyName }}</td>
+            </tr>
+            <tr>
+                <th>JobAdvertisement</th>
+                <td>{{ application.jobAdvertisement }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ application.contact }}</td>
+            </tr>
+            <tr>
+                <th>PostingDate</th>
+                <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FolowUpDate</th>
+                <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <td>{{ application.answer }}</td>
+            </tr>
+            <tr>
+                <th>Unsolicited</th>
+                <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ application.comments }}</td>
+            </tr>
+            <tr>
+                <th>JobInterview</th>
+                <td>{{ application.jobInterview }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('application_index') }}">back to list</a>
+
+    <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
+
+    {{ include('application/_delete_form.html.twig') }}
+{% endblock %}
