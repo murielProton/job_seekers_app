@@ -21,8 +21,16 @@ class ApplicationController extends AbstractController
     public function index(ApplicationRepository $applicationRepository): Response
     {
         return $this->render('application/index.html.twig', [
-            'applications' => $applicationRepository->findAll(),
+            'applications' => $applicationRepository->findAllOrdered()
         ]);
+    }
+
+    /**
+     * @Route("/home", name="home", methods={"GET"})
+     */
+    public function home(ApplicationRepository $applicationRepository): Response
+    {
+        return $this->render('application/home.html.twig', []);
     }
 
     /**

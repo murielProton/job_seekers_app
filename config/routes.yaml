@@ -1,10 +1,10 @@
 index:
     path: /
-    controller: App\Controller\ChefController::index
+    controller: App\Controller\ApplicationController::index
 
 home:
     path: /home
-    controller: App\Controller\ChefController::home
+    controller: App\Controller\ApplicationController::home
 
 application:
     path: /application

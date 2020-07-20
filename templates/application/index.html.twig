@@ -24,7 +24,6 @@
         {% for application in applications %}
                 <td>{{ application.webSiteName }}</td>
                 <td>{{ application.companyName }}</td>
-                <td>{{ application.contact }}</td>
                 <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.answer }}</td>

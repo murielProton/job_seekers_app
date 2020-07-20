@@ -42,6 +42,11 @@ class Contact
      */
     private $address;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Application::class, mappedBy="contact", cascade={"persist", "remove"})
+     */
+    private $application;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,5 +110,22 @@ class Contact
         $this->address = $address;
 
         return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(?Application $application): self
+    {
+        $this->application = $application;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->forName;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ApplicationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -34,11 +36,6 @@ class Application
     private $jobAdvertisement;
 
     /**
-     * @ORM\Column(type="object", nullable=true)
-     */
-    private $contact;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $postingDate;
@@ -67,6 +64,16 @@ class Application
      * @ORM\Column(type="object", nullable=true)
      */
     private $jobInterview;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, inversedBy="application", cascade={"persist", "remove"})
+     */
+    private $contact;
+
+    public function __construct()
+    {
+        $this->contact = new Contact();
+    }
 
     public function getId(): ?int
     {
@@ -105,18 +112,6 @@ class Application
     public function setJobAdvertisement(?string $jobAdvertisement): self
     {
         $this->jobAdvertisement = $jobAdvertisement;
-
-        return $this;
-    }
-
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    public function setContact($contact): self
-    {
-        $this->contact = $contact;
 
         return $this;
     }
@@ -190,6 +185,18 @@ class Application
     public function setJobInterview($jobInterview): self
     {
         $this->jobInterview = $jobInterview;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }
