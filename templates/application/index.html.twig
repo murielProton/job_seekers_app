@@ -1,31 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Application index{% endblock %}
+{% block title %}Index de Vos Candidatures{% endblock %}
 
 {% block body %}
-    <h1>Application index</h1>
+    <h1>Index de Vos Candidatures</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>WebSiteName</th>
-                <th>CompanyName</th>
-                <th>JobAdvertisement</th>
-                <th>Contact</th>
-                <th>PostingDate</th>
-                <th>FolowUpDate</th>
-                <th>Answer</th>
-                <th>Unsolicited</th>
-                <th>Comments</th>
-                <th>JobInterview</th>
+                <th>Nom du site WEB</th>
+                <th>Nom de la Société*</th>
+                <th>Annonce</th>
+                <th>Contacte</th>
+                <th>Date de Candidature</th>
+                <th>Date de Relance</th>
+                <th>Réponse</th>
+                <th>Candidature Spontanée</th>
+                <th>Commentaires</th>
+                <th>Entretien d'embauche</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for application in applications %}
-            <tr>
-                <td>{{ application.id }}</td>
                 <td>{{ application.webSiteName }}</td>
                 <td>{{ application.companyName }}</td>
                 <td>{{ application.jobAdvertisement }}</td>
@@ -37,17 +34,17 @@
                 <td>{{ application.comments }}</td>
                 <td>{{ application.jobInterview }}</td>
                 <td>
-                    <a href="{{ path('application_show', {'id': application.id}) }}">show</a>
-                    <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
+                    <a href="{{ path('application_show', {'id': application.id}) }}">Détails</a>
+                    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="12">no records found</td>
+                <td colspan="12">Aucune Candidatures Enregistrée en BDD.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('application_new') }}">Create new</a>
+    <a href="{{ path('application_new') }}">Créer une Nouvelle Candidature</a>
 {% endblock %}

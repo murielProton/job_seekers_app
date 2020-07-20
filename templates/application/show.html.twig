@@ -8,55 +8,55 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Numéro</th>
                 <td>{{ application.id }}</td>
             </tr>
             <tr>
-                <th>WebSiteName</th>
+                <th>Nom du site WEB</th>
                 <td>{{ application.webSiteName }}</td>
             </tr>
             <tr>
-                <th>CompanyName</th>
+                <th>Nom de la Société</th>
                 <td>{{ application.companyName }}</td>
             </tr>
             <tr>
-                <th>JobAdvertisement</th>
+                <th>Annonce</th>
                 <td>{{ application.jobAdvertisement }}</td>
             </tr>
             <tr>
-                <th>Contact</th>
+                <th>Contacte</th>
                 <td>{{ application.contact }}</td>
             </tr>
             <tr>
-                <th>PostingDate</th>
+                <th>Date de Candidature</th>
                 <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>FolowUpDate</th>
+                <th>Date de Relance</th>
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Answer</th>
+                <th>Réponse</th>
                 <td>{{ application.answer }}</td>
             </tr>
             <tr>
-                <th>Unsolicited</th>
+                <th>Candidature Spontanée</th>
                 <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>Comments</th>
+                <th>Commentaires</th>
                 <td>{{ application.comments }}</td>
             </tr>
             <tr>
-                <th>JobInterview</th>
+                <th>Entretien d'embauche</th>
                 <td>{{ application.jobInterview }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('application_index') }}">back to list</a>
+    <a href="{{ path('application_index') }}">retour à la liste</a>
 
-    <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
+    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
 
     {{ include('application/_delete_form.html.twig') }}
 {% endblock %}

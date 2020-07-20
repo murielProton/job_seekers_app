@@ -58,7 +58,7 @@ class Application
     private $unsolicited;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $comments;
 

@@ -6,7 +6,17 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {#pour les path il faut aller chercher l'info dans les contrôleurs #}
+        <ul>
+        <li><a href="{{ path('/') }}"></a>Liste de vos Candidatures</li>
+        <li><a href="{{ path('/new') }}"></a>Nouvelle Candidature</li>
+        <li><a href="{{ path('/application') }}"></a>essais 1</li>
+        <li><a href="{{ path('/application/new') }}"></a>essais new 1</li>
+        <li><a href="{{ path('/application/') }}"></a>essais liste 1</li>
+        </ul>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+
