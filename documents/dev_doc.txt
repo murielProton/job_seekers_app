@@ -23,3 +23,9 @@ select count(* from application)
 // Aller dans le terminal à la racine de job_seekers_app, taper les commandes :
 php bin/console make:migration
 php bin/console doctrine:schema:update --force
+-------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------BARRE DE NAVIGATION----------------------------------------------------
+//dans le fichier templates>base.html.twig, mettre la barre de nav en dehors de <body></body> et juste après 
+//<head></head> dans un block {% block navbar %}<nav class=""></nav>{% endblock %}
+// si la navbar figure dans le body elle ne serra pas vue dans le site.
+        

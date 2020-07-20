@@ -16,4 +16,12 @@ class ChefController extends AbstractController
             'controller_name' => 'ChefController',
         ]);
     }
+        /**
+     * @Route("/home", name="accueil")
+     */
+    public function home()
+    {
+        return $this->render('chef/home.html.twig', [
+        ]);
+    }
 }
