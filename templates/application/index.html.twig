@@ -24,8 +24,8 @@
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.comments }}</td>
                 <td>
-                    <a href="{{ path('application_show', {'id': application.id}) }}">Détails</a>
-                    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
+                    <a href="{{ path('application_show', {'id': application.id}) }}">Détails</a><br />
+                    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a><br />
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('application_new') }}" class="btn btn-light" role="button">Nouvelle Candidature</a>
+    <a href="{{ path('application_new') }}" class="btn btn-light" role="button">Nouvelle Candidature</a><br />
 {% endblock %}
