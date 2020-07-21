@@ -61,9 +61,21 @@ class Application
      */
     private $contact;
 
+    /**
+     * @ORM\OneToMany(targetEntity=JobInterview::class, mappedBy="application")
+     */
+    private $JobInterview;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="application")
+     */
+    private $answer;
+
     public function __construct()
     {
         $this->contact = new Contact();
+        $this->JobInterview = new ArrayCollection();
+        $this->answer = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +176,68 @@ class Application
     public function setContact(?Contact $contact): self
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|JobInterview[]
+     */
+    public function getJobInterview(): Collection
+    {
+        return $this->JobInterview;
+    }
+
+    public function addJobInterview(JobInterview $jobInterview): self
+    {
+        if (!$this->JobInterview->contains($jobInterview)) {
+            $this->JobInterview[] = $jobInterview;
+            $jobInterview->setApplication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJobInterview(JobInterview $jobInterview): self
+    {
+        if ($this->JobInterview->contains($jobInterview)) {
+            $this->JobInterview->removeElement($jobInterview);
+            // set the owning side to null (unless already changed)
+            if ($jobInterview->getApplication() === $this) {
+                $jobInterview->setApplication(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answer[]
+     */
+    public function getAnswer(): Collection
+    {
+        return $this->answer;
+    }
+
+    public function addAnswer(Answer $answer): self
+    {
+        if (!$this->answer->contains($answer)) {
+            $this->answer[] = $answer;
+            $answer->setApplication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answer->contains($answer)) {
+            $this->answer->removeElement($answer);
+            // set the owning side to null (unless already changed)
+            if ($answer->getApplication() === $this) {
+                $answer->setApplication(null);
+            }
+        }
 
         return $this;
     }

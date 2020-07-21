@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New JobInterview{% endblock %}
+{% block title %}Nouvel Entretien{% endblock %}
 
 {% block body %}
-    <h1>Create new JobInterview</h1>
+    <h1>Nouvel Entretien</h1>
 
     {{ include('job_interview/_form.html.twig') }}
 
-    <a href="{{ path('job_interview_index') }}">back to list</a>
 {% endblock %}

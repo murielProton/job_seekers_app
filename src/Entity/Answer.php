@@ -27,6 +27,11 @@ class Answer
      */
     private $textOfAnswer;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="answer")
+     */
+    private $application;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Answer
     public function setTextOfAnswer(?string $textOfAnswer): self
     {
         $this->textOfAnswer = $textOfAnswer;
+
+        return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(?Application $application): self
+    {
+        $this->application = $application;
 
         return $this;
     }

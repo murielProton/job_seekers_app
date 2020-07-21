@@ -12,31 +12,31 @@
                 <td>{{ contact.id }}</td>
             </tr>
             <tr>
-                <th>ForName</th>
+                <th>Prénom</th>
                 <td>{{ contact.forName }}</td>
             </tr>
             <tr>
-                <th>SirName</th>
+                <th>Nom</th>
                 <td>{{ contact.sirName }}</td>
             </tr>
             <tr>
-                <th>Telephone</th>
+                <th>Téléphone</th>
                 <td>{{ contact.telephone }}</td>
             </tr>
             <tr>
-                <th>EMail</th>
+                <th>Couriel</th>
                 <td>{{ contact.eMail }}</td>
             </tr>
             <tr>
-                <th>Address</th>
+                <th>Adresse</th>
                 <td>{{ contact.address }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('contact_index') }}">back to list</a>
+    <a href="{{ path('contact_index') }}">liste des contacts</a>
 
-    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
 
     {{ include('contact/_delete_form.html.twig') }}
 {% endblock %}

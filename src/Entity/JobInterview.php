@@ -47,6 +47,11 @@ class JobInterview
      */
     private $contactTitle;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="JobInterview")
+     */
+    private $application;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class JobInterview
     public function setContactTitle(?string $contactTitle): self
     {
         $this->contactTitle = $contactTitle;
+
+        return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(?Application $application): self
+    {
+        $this->application = $application;
 
         return $this;
     }
