@@ -23,14 +23,14 @@ class Answer
     private $date;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $textOfAnswer;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="answer")
      */
     private $application;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $textOfAnswer = [];
 
     public function getId(): ?int
     {
@@ -49,18 +49,6 @@ class Answer
         return $this;
     }
 
-    public function getTextOfAnswer(): ?string
-    {
-        return $this->textOfAnswer;
-    }
-
-    public function setTextOfAnswer(?string $textOfAnswer): self
-    {
-        $this->textOfAnswer = $textOfAnswer;
-
-        return $this;
-    }
-
     public function getApplication(): ?Application
     {
         return $this->application;
@@ -69,6 +57,18 @@ class Answer
     public function setApplication(?Application $application): self
     {
         $this->application = $application;
+
+        return $this;
+    }
+
+    public function getTextOfAnswer(): ?array
+    {
+        return $this->textOfAnswer;
+    }
+
+    public function setTextOfAnswer(?array $textOfAnswer): self
+    {
+        $this->textOfAnswer = $textOfAnswer;
 
         return $this;
     }

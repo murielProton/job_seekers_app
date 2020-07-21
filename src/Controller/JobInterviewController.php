@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\JobInterview;
 use App\Form\JobInterviewType;
 use App\Repository\JobInterviewRepository;
+use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +29,13 @@ class JobInterviewController extends AbstractController
     /**
      * @Route("/new", name="job_interview_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ApplicationRepository $applicationRepository): Response
     {
         $jobInterview = new JobInterview();
+        if($request->query->get('id') != null){
+            $application = $applicationRepository->findOneBy(array('id' => $request->query->get('id')));
+            $jobInterview->setApplication($application);
+        }
         $form = $this->createForm(JobInterviewType::class, $jobInterview);
         $form->handleRequest($request);
 

@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>TextOfAnswer</th>
-                <td>{{ answer.textOfAnswer }}</td>
+                <td>{% for text in answer.textOfAnswer %}{{ text }}{% endfor %}</td>
             </tr>
         </tbody>
     </table>

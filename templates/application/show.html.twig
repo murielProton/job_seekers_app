@@ -25,7 +25,12 @@
             </tr>
             <tr>
                 <th>Contact</th>
-                <td>{ % for application.contact in contacts %}</td>
+                <td>{% if application.contact is defined and application.contact is not null %}
+                    <a href="{{ path('contact_show', {'id': application.contact.id}) }}">{{application.contact.forName}} {{application.contact.sirName}}
+                    </a>
+                    
+                    <br>{{application.contact.telephone}}
+                {% endif %}</td>
                 <tr></tr>
             </tr>
             <tr>
@@ -44,6 +49,23 @@
                 <th>Commentaires</th>
                 <td>{{ application.comments }}</td>
             </tr>
+            <tr>
+               <th>Entretiens</th>
+               <td>
+                {% for job_interview in application.jobInterview %}
+                    <div><a href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détails du {{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</a><div>
+                {% endfor %}
+               </td>
+            </tr>
+            <tr>
+                <th>Réponses</th>
+                <td>{% for answer in application.answer %}
+                     <div><a href="{{ path('answer_show', {'id': answer.id}) }}">Date :{{ answer.date ? answer.date|date('Y-m-d') : '' }}</a></div>
+                <div>
+                {% for text in answer.textOfAnswer %}{{ text }}{% endfor %}
+                {% endfor %}</div>
+            </tr>
+            
         </tbody>
     </table>
     <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-light" role="button">Modifier</a><br />

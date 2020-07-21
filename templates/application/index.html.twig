@@ -11,6 +11,7 @@
 			<tr>
 				<th>Nom du site WEB</th>
 				<th>Nom de la Sociététe</th>
+				<th>Contact</th>
 				<th>Date de Candidature</th>
 				<th>Date de Relance</th>
 				<th>Commentaires</th>
@@ -21,6 +22,11 @@
 			{% for application in applications %}
 				<td>{{ application.webSiteName }}</td>
 				<td>{{ application.companyName }}</td>
+				<td>{% if application.contact is defined and application.contact is not null %}
+						{{application.contact.forName}} {{application.contact.sirName}}
+						<br>{{application.contact.telephone}}
+					{% endif %}
+				</td>
 				<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
 				<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
 				<td>{{ application.comments }}</td>
@@ -28,7 +34,7 @@
 					<a href="{{ path('application_show', {'id': application.id}) }}">Détails</a><br/>
 					<a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a><br/>
 					<a href="{{ path('job_interview_new', {'id': application.id}) }}">Nouvel Entretien</a><br/>
-					<a href="{{ path('answer_new', {'id': application.id}) }}" class="btn btn-light" role="button">Nouvelle Réponse</a><br/>
+					<a href="{{ path('answer_new', {'id': application.id}) }}">Nouvelle Réponse</a><br/>
 
 				</td>
 			</tr>

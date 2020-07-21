@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Answer;
 use App\Form\AnswerType;
 use App\Repository\AnswerRepository;
+use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +29,13 @@ class AnswerController extends AbstractController
     /**
      * @Route("/new", name="answer_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ApplicationRepository $applicationRepository): Response
     {
         $answer = new Answer();
+        if($request->query->get('id') != null){
+            $application = $applicationRepository->findOneBy(array('id' => $request->query->get('id')));
+            $answer->setApplication($application);
+        }
         $form = $this->createForm(AnswerType::class, $answer);
         $form->handleRequest($request);
 

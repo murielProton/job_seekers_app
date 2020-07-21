@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ answer.id }}</td>
                 <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
-                <td>{{ answer.textOfAnswer }}</td>
+                <td>{% for text in answer.textOfAnswer %}{{ text }}{% endfor %}</td>
                 <td>
                     <a href="{{ path('answer_show', {'id': answer.id}) }}">Détails</a>
                     <a href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
