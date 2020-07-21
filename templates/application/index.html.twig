@@ -1,39 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index de Vos Candidatures{% endblock %}
+{% block title %}Index de Vos Candidatures
+{% endblock %}
 
 {% block body %}
-    <h1>Index de Vos Candidatures</h1>
+	<h1>Index de Vos Candidatures</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom du site WEB</th>
-                <th>Nom de la Sociététe</th>
-                <th>Date de Candidature</th>
-                <th>Date de Relance</th>
-                <th>Commentaires</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for application in applications %}
-                <td>{{ application.webSiteName }}</td>
-                <td>{{ application.companyName }}</td>
-                <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
-                <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
-                <td>{{ application.comments }}</td>
-                <td>
-                    <a href="{{ path('application_show', {'id': application.id}) }}">Détails</a><br />
-                    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a><br />
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">Aucune Candidatures Enregistrée en BDD.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('application_new') }}" class="btn btn-light" role="button">Nouvelle Candidature</a><br />
-{% endblock %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom du site WEB</th>
+				<th>Nom de la Sociététe</th>
+				<th>Date de Candidature</th>
+				<th>Date de Relance</th>
+				<th>Commentaires</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for application in applications %}
+				<td>{{ application.webSiteName }}</td>
+				<td>{{ application.companyName }}</td>
+				<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+				<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+				<td>{{ application.comments }}</td>
+				<td>
+					<a href="{{ path('application_show', {'id': application.id}) }}">Détails</a><br/>
+					<a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a><br/>
+					<a href="{{ path('job_interview_new', {'id': application.id}) }}">Nouvel Entretien</a><br/>
+					<a href="{{ path('answer_new', {'id': application.id}) }}" class="btn btn-light" role="button">Nouvelle Réponse</a><br/>
+
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="12">Aucune Candidatures Enregistrée en BDD.</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<a href="{{ path('application_new') }}" class="btn btn-light" role="button">Nouvelle Candidature</a><br/>{% endblock %}

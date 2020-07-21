@@ -14,6 +14,6 @@ answer_new:
     path: /new/answer
     controller: App\Controller\AnswerController::new
 
-jobInterview_new:
+job_interview_new:
     path: /new/job_interview
     controller: App\Controller\JobInterviewController::new
