@@ -46,11 +46,6 @@ class Application
     private $folowUpDate;
 
     /**
-     * @ORM\Column(type="object", nullable=true)
-     */
-    private $answer;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $unsolicited;
@@ -60,10 +55,6 @@ class Application
      */
     private $comments;
 
-    /**
-     * @ORM\Column(type="object", nullable=true)
-     */
-    private $jobInterview;
 
     /**
      * @ORM\OneToOne(targetEntity=Contact::class, inversedBy="application", cascade={"persist", "remove"})
@@ -141,18 +132,6 @@ class Application
         return $this;
     }
 
-    public function getAnswer()
-    {
-        return $this->answer;
-    }
-
-    public function setAnswer($answer): self
-    {
-        $this->answer = $answer;
-
-        return $this;
-    }
-
     public function getUnsolicited(): ?bool
     {
         return $this->unsolicited;
@@ -173,18 +152,6 @@ class Application
     public function setComments(string $comments): self
     {
         $this->comments = $comments;
-
-        return $this;
-    }
-
-    public function getJobInterview()
-    {
-        return $this->jobInterview;
-    }
-
-    public function setJobInterview($jobInterview): self
-    {
-        $this->jobInterview = $jobInterview;
 
         return $this;
     }

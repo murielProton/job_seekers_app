@@ -30,9 +30,14 @@ php bin/console doctrine:schema:update --force
 // si la navbar figure dans le body elle ne serra pas vue dans le site.
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------ONE TO ONE || UN FORMULAIRE DANS UN FORMULAIRE--------------------------------------
+//exemple contact dans application
 //aller dans src/Entity/Application.php supprimer le champ||field contact ainsi que toutes les fonctions associées(get et 
 //set).
 //aller dans templates/application/home.html.twig et suprimer la ligne <td>{{ application.contact }}</td>
+//rechercher toutes les mentions de contact dans les fichiers et les supprimer
+//dans le terminale
+php bin/console make:migration
+php bin/console doctrine:make:migration
 //dans le terminale
 cd Epitech/Rendu/job_seekers_app
 php bin/console make:entity 
