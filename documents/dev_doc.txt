@@ -15,8 +15,17 @@ USE symfony
 show tables;
 //voir les champs de la table application
 describe application;
-//voir une ligne de la bd ??
-select count(* from application)
+describe **Nom de table**;
+//voir toutes les lignes de la table application
+SELECT * FROM application;
+//Voir toutes les lignes d'une table
+SELECT * FROM **Nom de table**;
+//Voir toutes les lignes d'une table trier par colone 3
+SELECT * FROM **Nom de table** ORDER BY 3;
+//Voir toutes les lignes de la table application à condition que job_advertisement soit null
+SELECT * FROM application WHERE job_advertisement is null;
+//Voir toutes les lignes d'une table à condition que job_advertisement soit null
+SELECT * FROM **Nom de table** WHERE **Condition**;
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------CHANGER L'ENTITY-----------------------------------------------------
 //si l'ENTITY n'est pas convenable dans sa Xième version, changer l'info dans src>Entity>**NOM_ENTITY**
