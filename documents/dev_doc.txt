@@ -28,4 +28,79 @@ php bin/console doctrine:schema:update --force
 //dans le fichier templates>base.html.twig, mettre la barre de nav en dehors de <body></body> et juste après 
 //<head></head> dans un block {% block navbar %}<nav class=""></nav>{% endblock %}
 // si la navbar figure dans le body elle ne serra pas vue dans le site.
-        
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------ONE TO ONE || UN FORMULAIRE DANS UN FORMULAIRE--------------------------------------
+//aller dans src/Entity/Application.php supprimer le champ||field contact ainsi que toutes les fonctions associées(get et 
+//set).
+//aller dans templates/application/home.html.twig et suprimer la ligne <td>{{ application.contact }}</td>
+//dans le terminale
+cd Epitech/Rendu/job_seekers_app
+php bin/console make:entity 
+//->Contact
+php bin/console make:migration
+php bin/console doctrine:make:migration
+php bin/console make:crud
+// action qui cré les les fichiers :
+// - templates/contact/_delete_form.html.twig
+// - templates/contact/_form.html.twig
+// - templates/contact/_form.html.twig
+// - templates/contact/edit.html.twig
+// - templates/contact/index.html.twig
+// - templates/contact/new.html.twig
+// - templates/contact/show.html.twig
+//->Contact
+php bin/console make:migration
+php bin/console doctrine:make:migration
+php bin/console make:entity 
+//->Application ATTENTION relation one to one à définir avec Contact.
+php bin/console make:migration
+php bin/console doctrine:make:migration
+php bin/console make:crud
+//-> Application
+//->Application
+//Aller dans src/Form/ApplicationType.php
+use App\Entity\Contact;
+           ->add('contact',ContactType::class)
+                /* [
+                    'class' => Contact::class,
+                    'choice_label' => 'Contact',
+                ]*/
+-------------------------------------------------------------------------------------------------------------------------
+---------------------------------------TIRER UNE LISTE AVEC LA FONCTION FINDALL()----------------------------------------
+//aller dans src/Controller/ApplicationController.php, remplacer
+'applications' => $applicationRepository->findAll()
+//par
+'applications' => $applicationRepository->findAllOrdered()
+//aller dans src/Repository/ApplicationRepository.php, après la fonction __construct(), et ajouter la fonction :
+    public function findAllOrdered()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM App\Entity\Application a ORDER BY a.postingDate DESC'
+            )
+            ->getResult();
+    }
+-------------------------------------------------------------------------------------------------------------------------
+---------------------------------CHANGER LABEL FORMULAIRE||TRADUCTION ANGLAIS->FRANCAIS----------------------------------
+//Aller dans src/Form/ApplicationType.php
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType; //?? A VERIFIER
+use Symfony\Bridge\Doctrine\Form\Type\ChoiceType; //?? A VERIFIER
+//exemple de correction à ajouter au $builder
+->add('webSiteName', TextType::class,  ['label' => "nom du site WEB"])
+->add('**nom data base**', ****Type::class,  ['label' => "****"])
+
+// Documentation officiel sur les Form Types References
+https://symfony.com/doc/current/reference/forms/types.html
+-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------CSS-----------------------------------------------------------
+
+//render DATE with bootstrap
+use https://github.com/uxsolutions/bootstrap-datepicker
+-------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
