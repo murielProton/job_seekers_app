@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index de Vos Candidatures
+{% block title %}Liste de Vos Candidatures
 {% endblock %}
 
 {% block body %}
-	<h1>Index de Vos Candidatures</h1>
+	<h1>Liste de Vos Candidatures</h1>
 
-	<table class="table">
+	<table class="table" data-toggle="table">
 		<thead>
 			<tr>
-				<th>Nom du site WEB</th>
-				<th>Nom de la Sociététe</th>
-				<th>Contact</th>
-				<th>Date de Candidature</th>
-				<th>Date de Relance</th>
-				<th>Commentaires</th>
-				<th>actions</th>
+				<th data-sortable="true">Nom du site WEB</th>
+				<th data-sortable="true">Nom de la Sociététe</th>
+				<th data-sortable="true">Contact</th>
+				<th data-sortable="true">Date de Candidature</th>
+				<th data-sortable="true">Date de Relance</th>
+				<th data-sortable="true">Commentaires</th>
+				<th >Actions</th>
 			</tr>
 		</thead>
 		<tbody>

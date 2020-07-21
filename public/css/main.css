@@ -1,0 +1,39 @@
+
+.btn-default{
+    background-color:transparent;
+    border: 2px solid grey;
+    border-radius: 8px;
+}
+.btn-light-red:hover {
+    color: #212529;
+    background-color: #ca6281;
+    border-color: #c05777;
+}
+body{
+    width: 1400px;
+    margin: auto;
+}
+h1{
+    text-align: center;
+    margin-bottom: 25px;
+}
+.btn-light{
+    float: right;
+}
+.btn-light-red{
+    float: left !important;
+}
+nav {
+    margin-bottom: 42px;
+}
+table {
+    margin-bottom: 15px;
+}
+label{
+    width: 250px;
+    vertical-align: top;
+}
+th{
+    text-align: center;
+
+}

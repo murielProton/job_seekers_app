@@ -24,17 +24,18 @@ class JobInterviewType extends AbstractType
                 'required' => true
             ])
             ->add('dateOfInterview', DateType::class, [
-                'label' => "date de la première relance*",
+                'label' => "Date de la première relance*",
                 'widget' => 'single_text',
                 'required'   => false
             ])
             ->add('schedule', TimeType::class, [
                 'input'  => 'datetime',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'label' => "Horaire"
             ])
             ->add('Address', TextareaType::class,[
-                'label' => "Adresse"
+                'label' => "Adresse",
+                'attr' => ['rows' => '8', 'cols' => '75']
             ])
             ->add('contactForName', TextType::class,[
                 'label' =>"Prénom"

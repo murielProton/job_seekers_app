@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Numéro</th>
-                <td>{{ application.id }}</td>
-            </tr>
-            <tr>
                 <th>Nom du site WEB</th>
                 <td>{{ application.webSiteName }}</td>
             </tr>
@@ -68,9 +64,13 @@
             
         </tbody>
     </table>
-    <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-light" role="button">Modifier</a><br />
-    <a href="{{ path('job_interview_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvel Entretien</a><br />
-    <a href="{{ path('answer_new', {'id': application.id}) }}"class="btn btn-light" role="button">Réponse</a><br />
+    <div>
+    <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-light" role="button">Modifier</a>
+    </div><div>
+    <a href="{{ path('job_interview_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvel Entretien</a>
+    </div><div>
+    <a href="{{ path('answer_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvelle Réponse</a>
+    </div>
 
     {{ include('application/_delete_form.html.twig') }}
 {% endblock %}

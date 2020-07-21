@@ -1,27 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index des Entretiens{% endblock %}
+{% block title %}Liste des Entretiens{% endblock %}
 
 {% block body %}
-    <h1>Index des Entretiens</h1>
+    <h1>Liste des Entretiens</h1>
 
-    <table class="table">
+    <table class="table" data-toggle="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date de l'Entretien</th>
-                <th>Horaire</th>
-                <th>Adresse</th>
-                <th>Prénom du Contact</th>
-                <th>Nom du Contact</th>
-                <th>Titre du Contact</th>
-                <th>Actions</th>
+                <th data-sortable="true">Date de l'Entretien</th>
+                <th data-sortable="true">Horaire</th>
+                <th data-sortable="true">Adresse</th>
+                <th data-sortable="true">Prénom</th>
+                <th data-sortable="true">Nom</th>
+                <th data-sortable="true">Titre</th>
+                <th >Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for job_interview in job_interviews %}
             <tr>
-                <td>{{ job_interview.id }}</td>
                 <td>{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</td>
                 <td>{{ job_interview.schedule ? job_interview.schedule|date('H:i:s') : '' }}</td>
                 <td>{{ job_interview.Address }}</td>
@@ -41,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('job_interview_new') }}">Nouvel Entretien</a>
+    <a href="{{ path('job_interview_new') }}"class="btn btn-light">Nouvel Entretien</a>
 {% endblock %}

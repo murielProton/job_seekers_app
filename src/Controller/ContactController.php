@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
+use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +29,13 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="contact_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ApplicationRepository $applicationRepository): Response
     {
         $contact = new Contact();
+        if($request->query->get('id') != null){
+            $application = $applicationRepository->findOneBy(array('id' => $request->query->get('id')));
+            $contact->setApplication($application);
+        }
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
@@ -63,7 +68,7 @@ class ContactController extends AbstractController
      */
     public function edit(Request $request, Contact $contact): Response
     {
-        $form = $this->createForm(Contact1Type::class, $contact);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

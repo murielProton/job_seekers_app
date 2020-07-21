@@ -5,22 +5,24 @@
 {% block body %}
     <h1>Liste des Contacts</h1>
 
-    <table class="table">
+    <table class="table" data-toggle="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Télephone</th>
-                <th>Couriel</th>
-                <th>Adresss</th>
-                <th>Actions</th>
+                <th data-sortable="true">Employeur</th>
+                <th data-sortable="true">Prénom</th>
+                <th data-sortable="true">Nom</th>
+                <th data-sortable="true">Télephone</th>
+                <th data-sortable="true">Couriel</th>
+                <th data-sortable="true">Adresss</th>
+                <th >Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for contact in contacts %}
             <tr>
-                <td>{{ contact.id }}</td>
+                <td>{% if contact.application is defined and contact.application is not null %}
+                    {{ contact.application.companyName}}
+                    {% endif %}</td>
                 <td>{{ contact.forName }}</td>
                 <td>{{ contact.sirName }}</td>
                 <td>{{ contact.telephone }}</td>
@@ -38,6 +40,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('contact_new') }}">Nouveau Contact</a>
+    <br>
+    <a href="{{ path('contact_new') }}" class="btn btn-light">Nouveau Contact</a>
 {% endblock %}

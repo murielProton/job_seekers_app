@@ -1,23 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index des Réponses{% endblock %}
+{% block title %}Liste des Réponses{% endblock %}
 
 {% block body %}
-    <h1>Index des Réponses</h1>
+    <h1>Liste des Réponses</h1>
 
-    <table class="table">
+    <table class="table" data-toggle="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Réponses</th>
-                <th>Actions</th>
+                <th data-sortable="true">Date</th>
+                <th data-sortable="true">Réponses</th>
+                <th >Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for answer in answers %}
             <tr>
-                <td>{{ answer.id }}</td>
                 <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
                 <td>{% for text in answer.textOfAnswer %}{{ text }}{% endfor %}</td>
                 <td>
@@ -33,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('answer_new') }}">Nouvelle Réponse</a>
+    <a href="{{ path('answer_new') }}" class="btn btn-light" role="button">Nouvelle Réponse</a>
 {% endblock %}

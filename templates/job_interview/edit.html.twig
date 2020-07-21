@@ -7,7 +7,7 @@
 
     {{ include('job_interview/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('job_interview_index') }}">liste des entretiens</a>
+    <a href="{{ path('job_interview_index') }}"  class="btn btn-light" role="button">Liste des entretiens</a>
 
     {{ include('job_interview/_delete_form.html.twig') }}
 {% endblock %}

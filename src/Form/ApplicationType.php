@@ -32,6 +32,7 @@ class ApplicationType extends AbstractType
             ->add('jobAdvertisement', TextareaType::class,  [
                 'label' => "annonce",
                 'required'   => false,
+                'attr' => ['rows' => '8', 'cols' => '75']
             ])/*, [
                 'attr' => ['class' => 'tinymce'],
             ])*/
@@ -60,7 +61,8 @@ class ApplicationType extends AbstractType
             ])
             ->add('comments', TextareaType::class,  [
                 'label' => "commentaires",
-                'required'   => false
+                'required'   => false,
+                'attr' => ['rows' => '8', 'cols' => '75']
             ])/*, [
                 'attr' => ['class' => 'tinymce'],
             ])*/;
