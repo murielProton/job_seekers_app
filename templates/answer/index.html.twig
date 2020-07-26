@@ -1,35 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Réponses{% endblock %}
+{% block title %}Answer index{% endblock %}
 
 {% block body %}
-    <h1>Liste des Réponses</h1>
+    <h1>Answer index</h1>
 
-    <table class="table" data-toggle="table">
+    <table class="table">
         <thead>
             <tr>
-                <th data-sortable="true">Date</th>
-                <th data-sortable="true">Réponses</th>
-                <th >Actions</th>
+                <th>Id</th>
+                <th>Date</th>
+                <th>TextOfAnswer</th>
+                <th>Comments</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for answer in answers %}
             <tr>
+                <td>{{ answer.id }}</td>
                 <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
-                <td>{% for text in answer.textOfAnswer %}{{ text }}{% endfor %}</td>
+                <td>{{ answer.textOfAnswer }}</td>
+                <td>{{ answer.comments }}</td>
                 <td>
-                    <a href="{{ path('answer_show', {'id': answer.id}) }}">Détails</a>
-                    <a href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
+                    <a href="{{ path('answer_show', {'id': answer.id}) }}">show</a>
+                    <a href="{{ path('answer_edit', {'id': answer.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">Aucunes réponses trouvées en Base de Donnée.</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('answer_new') }}" class="btn btn-light" role="button">Nouvelle Réponse</a>
+    <a href="{{ path('answer_new') }}">Create new</a>
 {% endblock %}

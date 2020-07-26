@@ -3,9 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\JobInterview;
-use App\Form\JobInterviewType;
+use App\Form\JobInterview1Type;
 use App\Repository\JobInterviewRepository;
-use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,14 +28,10 @@ class JobInterviewController extends AbstractController
     /**
      * @Route("/new", name="job_interview_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ApplicationRepository $applicationRepository): Response
+    public function new(Request $request): Response
     {
         $jobInterview = new JobInterview();
-        if($request->query->get('id') != null){
-            $application = $applicationRepository->findOneBy(array('id' => $request->query->get('id')));
-            $jobInterview->setApplication($application);
-        }
-        $form = $this->createForm(JobInterviewType::class, $jobInterview);
+        $form = $this->createForm(JobInterview1Type::class, $jobInterview);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,7 +63,7 @@ class JobInterviewController extends AbstractController
      */
     public function edit(Request $request, JobInterview $jobInterview): Response
     {
-        $form = $this->createForm(JobInterviewType::class, $jobInterview);
+        $form = $this->createForm(JobInterview1Type::class, $jobInterview);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

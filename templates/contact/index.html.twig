@@ -1,45 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Contacts{% endblock %}
+{% block title %}Contact index{% endblock %}
 
 {% block body %}
-    <h1>Liste des Contacts</h1>
+    <h1>Contact index</h1>
 
-    <table class="table" data-toggle="table">
+    <table class="table">
         <thead>
             <tr>
-                <th data-sortable="true">Employeur</th>
-                <th data-sortable="true">Prénom</th>
-                <th data-sortable="true">Nom</th>
-                <th data-sortable="true">Télephone</th>
-                <th data-sortable="true">Couriel</th>
-                <th data-sortable="true">Adresss</th>
-                <th >Actions</th>
+                <th>Id</th>
+                <th>ContactTitle</th>
+                <th>ForName</th>
+                <th>SirName</th>
+                <th>Telephone</th>
+                <th>EMail</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for contact in contacts %}
             <tr>
-                <td>{% if contact.application is defined and contact.application is not null %}
-                    {{ contact.application.companyName}}
-                    {% endif %}</td>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.contactTitle }}</td>
                 <td>{{ contact.forName }}</td>
                 <td>{{ contact.sirName }}</td>
                 <td>{{ contact.telephone }}</td>
                 <td>{{ contact.eMail }}</td>
-                <td>{{ contact.address }}</td>
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Détails</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">aucuns contacts</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <br>
-    <a href="{{ path('contact_new') }}" class="btn btn-light">Nouveau Contact</a>
+
+    <a href="{{ path('contact_new') }}">Create new</a>
 {% endblock %}

@@ -30,27 +30,17 @@ class JobInterview
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $Address;
+    private $comments;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\OneToOne(targetEntity=Answer::class, mappedBy="jobInterview", cascade={"persist", "remove"})
      */
-    private $contactForName;
+    private $answer;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\OneToOne(targetEntity=Address::class, inversedBy="jobInerview", cascade={"persist", "remove"})
      */
-    private $contactSirName;
-
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $contactTitle;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="JobInterview")
-     */
-    private $application;
+    private $adress;
 
     public function getId(): ?int
     {
@@ -81,62 +71,44 @@ class JobInterview
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getComments(): ?string
     {
-        return $this->Address;
+        return $this->comments;
     }
 
-    public function setAddress(?string $Address): self
+    public function setComments(?string $comments): self
     {
-        $this->Address = $Address;
+        $this->comments = $comments;
 
         return $this;
     }
 
-    public function getContactForName(): ?string
+    public function getAnswer(): ?Answer
     {
-        return $this->contactForName;
+        return $this->answer;
     }
 
-    public function setContactForName(?string $contactForName): self
+    public function setAnswer(?Answer $answer): self
     {
-        $this->contactForName = $contactForName;
+        $this->answer = $answer;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newJobInterview = null === $answer ? null : $this;
+        if ($answer->getJobInterview() !== $newJobInterview) {
+            $answer->setJobInterview($newJobInterview);
+        }
 
         return $this;
     }
 
-    public function getContactSirName(): ?string
+    public function getAdress(): ?Address
     {
-        return $this->contactSirName;
+        return $this->adress;
     }
 
-    public function setContactSirName(?string $contactSirName): self
+    public function setAdress(?Address $adress): self
     {
-        $this->contactSirName = $contactSirName;
-
-        return $this;
-    }
-
-    public function getContactTitle(): ?string
-    {
-        return $this->contactTitle;
-    }
-
-    public function setContactTitle(?string $contactTitle): self
-    {
-        $this->contactTitle = $contactTitle;
-
-        return $this;
-    }
-
-    public function getApplication(): ?Application
-    {
-        return $this->application;
-    }
-
-    public function setApplication(?Application $application): self
-    {
-        $this->application = $application;
+        $this->adress = $adress;
 
         return $this;
     }

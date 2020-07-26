@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Application;
-use App\Form\ApplicationType;
+use App\Form\Application1Type;
 use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,16 +21,8 @@ class ApplicationController extends AbstractController
     public function index(ApplicationRepository $applicationRepository): Response
     {
         return $this->render('application/index.html.twig', [
-            'applications' => $applicationRepository->findAllOrdered()
+            'applications' => $applicationRepository->findAll(),
         ]);
-    }
-
-    /**
-     * @Route("/home", name="home", methods={"GET"})
-     */
-    public function home(ApplicationRepository $applicationRepository): Response
-    {
-        return $this->render('application/home.html.twig', []);
     }
 
     /**
@@ -39,7 +31,7 @@ class ApplicationController extends AbstractController
     public function new(Request $request): Response
     {
         $application = new Application();
-        $form = $this->createForm(ApplicationType::class, $application);
+        $form = $this->createForm(Application1Type::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,7 +63,7 @@ class ApplicationController extends AbstractController
      */
     public function edit(Request $request, Application $application): Response
     {
-        $form = $this->createForm(ApplicationType::class, $application);
+        $form = $this->createForm(Application1Type::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

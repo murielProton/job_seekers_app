@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,12 +20,17 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $contactTitle;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $forName;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $sirName;
 
@@ -33,23 +40,50 @@ class Contact
     private $telephone;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $eMail;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Answer::class, inversedBy="contact")
+     */
+    private $answer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="contact")
+     */
+    private $application;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contact")
+     */
+    private $companies;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Address::class, inversedBy="contact", cascade={"persist", "remove"})
      */
     private $address;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Application::class, mappedBy="contact", cascade={"persist", "remove"})
-     */
-    private $application;
+    public function __construct()
+    {
+        $this->companies = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getContactTitle(): ?string
+    {
+        return $this->contactTitle;
+    }
+
+    public function setContactTitle(?string $contactTitle): self
+    {
+        $this->contactTitle = $contactTitle;
+
+        return $this;
     }
 
     public function getForName(): ?string
@@ -100,14 +134,14 @@ class Contact
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getAnswer(): ?Answer
     {
-        return $this->address;
+        return $this->answer;
     }
 
-    public function setAddress(?string $address): self
+    public function setAnswer(?Answer $answer): self
     {
-        $this->address = $address;
+        $this->answer = $answer;
 
         return $this;
     }
@@ -124,8 +158,43 @@ class Contact
         return $this;
     }
 
-    public function __toString()
+    /**
+     * @return Collection|Company[]
+     */
+    public function getCompanies(): Collection
     {
-        return $this->forName;
+        return $this->companies;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
+            $company->addContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->companies->contains($company)) {
+            $this->companies->removeElement($company);
+            $company->removeContact($this);
+        }
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        $this->address = $address;
+
+        return $this;
     }
 }

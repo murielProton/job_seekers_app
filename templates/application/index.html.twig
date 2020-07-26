@@ -1,48 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste de Vos Candidatures
-{% endblock %}
+{% block title %}Application index{% endblock %}
 
 {% block body %}
-	<h1>Liste de Vos Candidatures</h1>
+    <h1>Application index</h1>
 
-	<table class="table" data-toggle="table">
-		<thead>
-			<tr>
-				<th data-sortable="true">Nom du site WEB</th>
-				<th data-sortable="true">Nom de la Sociététe</th>
-				<th data-sortable="true">Contact</th>
-				<th data-sortable="true">Date de Candidature</th>
-				<th data-sortable="true">Date de Relance</th>
-				<th data-sortable="true">Commentaires</th>
-				<th >Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for application in applications %}
-				<td>{{ application.webSiteName }}</td>
-				<td>{{ application.companyName }}</td>
-				<td>{% if application.contact is defined and application.contact is not null %}
-						{{application.contact.forName}} {{application.contact.sirName}}
-						<br>{{application.contact.telephone}}
-					{% endif %}
-				</td>
-				<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
-				<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
-				<td>{{ application.comments }}</td>
-				<td>
-					<a href="{{ path('application_show', {'id': application.id}) }}">Détails</a><br/>
-					<a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a><br/>
-					<a href="{{ path('job_interview_new', {'id': application.id}) }}">Nouvel Entretien</a><br/>
-					<a href="{{ path('answer_new', {'id': application.id}) }}">Nouvelle Réponse</a><br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>PostingDate</th>
+                <th>FolowUpDate</th>
+                <th>AddsWEBSite</th>
+                <th>JobAdvertisement</th>
+                <th>Unsolicited</th>
+                <th>Comments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for application in applications %}
+            <tr>
+                <td>{{ application.id }}</td>
+                <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+                <td>{{ application.addsWEBSite }}</td>
+                <td>{{ application.jobAdvertisement }}</td>
+                <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
+                <td>{{ application.comments }}</td>
+                <td>
+                    <a href="{{ path('application_show', {'id': application.id}) }}">show</a>
+                    <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-				</td>
-			</tr>
-		{% else %}
-			<tr>
-				<td colspan="12">Aucune Candidatures Enregistrée en BDD.</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</table>
-<a href="{{ path('application_new') }}" class="btn btn-light" role="button">Nouvelle Candidature</a><br/>{% endblock %}
+    <a href="{{ path('application_new') }}">Create new</a>
+{% endblock %}

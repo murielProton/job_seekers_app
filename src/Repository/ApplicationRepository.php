@@ -19,15 +19,6 @@ class ApplicationRepository extends ServiceEntityRepository
         parent::__construct($registry, Application::class);
     }
 
-    public function findAllOrdered()
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT a FROM App\Entity\Application a ORDER BY a.postingDate DESC'
-            )
-            ->getResult();
-    }
-
     // /**
     //  * @return Application[] Returns an array of Application objects
     //  */

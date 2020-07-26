@@ -8,69 +8,39 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Nom du site WEB</th>
-                <td>{{ application.webSiteName }}</td>
+                <th>Id</th>
+                <td>{{ application.id }}</td>
             </tr>
             <tr>
-                <th>Nom de la Société</th>
-                <td>{{ application.companyName }}</td>
-            </tr>
-            <tr>
-                <th>Annonce</th>
-                <td>{{ application.jobAdvertisement }}</td>
-            </tr>
-            <tr>
-                <th>Contact</th>
-                <td>{% if application.contact is defined and application.contact is not null %}
-                    <a href="{{ path('contact_show', {'id': application.contact.id}) }}">{{application.contact.forName}} {{application.contact.sirName}}
-                    </a>
-                    
-                    <br>{{application.contact.telephone}}
-                {% endif %}</td>
-                <tr></tr>
-            </tr>
-            <tr>
-                <th>Date de Candidature</th>
+                <th>PostingDate</th>
                 <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Date de Relance</th>
+                <th>FolowUpDate</th>
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Candidature Spontanée</th>
+                <th>AddsWEBSite</th>
+                <td>{{ application.addsWEBSite }}</td>
+            </tr>
+            <tr>
+                <th>JobAdvertisement</th>
+                <td>{{ application.jobAdvertisement }}</td>
+            </tr>
+            <tr>
+                <th>Unsolicited</th>
                 <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>Commentaires</th>
+                <th>Comments</th>
                 <td>{{ application.comments }}</td>
             </tr>
-            <tr>
-               <th>Entretiens</th>
-               <td>
-                {% for job_interview in application.jobInterview %}
-                    <div><a href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détails du {{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</a><div>
-                {% endfor %}
-               </td>
-            </tr>
-            <tr>
-                <th>Réponses</th>
-                <td>{% for answer in application.answer %}
-                     <div><a href="{{ path('answer_show', {'id': answer.id}) }}">Date :{{ answer.date ? answer.date|date('Y-m-d') : '' }}</a></div>
-                <div>
-                {% for text in answer.textOfAnswer %}{{ text }}{% endfor %}
-                {% endfor %}</div>
-            </tr>
-            
         </tbody>
     </table>
-    <div>
-    <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-light" role="button">Modifier</a>
-    </div><div>
-    <a href="{{ path('job_interview_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvel Entretien</a>
-    </div><div>
-    <a href="{{ path('answer_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvelle Réponse</a>
-    </div>
+
+    <a href="{{ path('application_index') }}">back to list</a>
+
+    <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
 
     {{ include('application/_delete_form.html.twig') }}
 {% endblock %}

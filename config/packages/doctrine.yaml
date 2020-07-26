@@ -2,7 +2,7 @@ doctrine:
     dbal:
         connections:
             default:
-                dbname: symfony
+                dbname: job_seekers_app
                 host: localhost
                 port: null
                 user: root

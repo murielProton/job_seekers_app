@@ -8,39 +8,35 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Employeur</th>
-                <td>{% if contact.application is defined and contact.application is not null %}
-                    <a href="{{ path('application_show', {'id': contact.application.id}) }}">{{ contact.application.companyName}}</a>
-                    
-                    {% endif %}
-                </td>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
             </tr>
             <tr>
-                <th>Prénom</th>
+                <th>ContactTitle</th>
+                <td>{{ contact.contactTitle }}</td>
+            </tr>
+            <tr>
+                <th>ForName</th>
                 <td>{{ contact.forName }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>SirName</th>
                 <td>{{ contact.sirName }}</td>
             </tr>
             <tr>
-                <th>Téléphone</th>
+                <th>Telephone</th>
                 <td>{{ contact.telephone }}</td>
             </tr>
             <tr>
-                <th>Couriel</th>
+                <th>EMail</th>
                 <td>{{ contact.eMail }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ contact.address }}</td>
             </tr>
         </tbody>
     </table>
-    <div>
-    <a href="{{ path('contact_index') }}"  class="btn btn-light" role="button">Liste des contacts</a>
-    </div><div>
-    <a href="{{ path('contact_edit', {'id': contact.id}) }}"  class="btn btn-light" role="button">Modifier</a>
-    </div>
+
+    <a href="{{ path('contact_index') }}">back to list</a>
+
+    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+
     {{ include('contact/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,8 +1,4 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-light">{{ button_label|default('Enregistrer') }}</button><br>
-        <a href="{{ path('job_interview_new', {'id': application.id}) }}"class="btn btn-light" role="button">Nouvel Entretien</a><br />
-    <a href="{{ path('answer_new', {'id': application.id}) }}"class="btn btn-light" role="button">Réponse</a><br />
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-
-

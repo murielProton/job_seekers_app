@@ -1,43 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Entretiens{% endblock %}
+{% block title %}JobInterview index{% endblock %}
 
 {% block body %}
-    <h1>Liste des Entretiens</h1>
+    <h1>JobInterview index</h1>
 
-    <table class="table" data-toggle="table">
+    <table class="table">
         <thead>
             <tr>
-                <th data-sortable="true">Date de l'Entretien</th>
-                <th data-sortable="true">Horaire</th>
-                <th data-sortable="true">Adresse</th>
-                <th data-sortable="true">Prénom</th>
-                <th data-sortable="true">Nom</th>
-                <th data-sortable="true">Titre</th>
-                <th >Actions</th>
+                <th>Id</th>
+                <th>DateOfInterview</th>
+                <th>Schedule</th>
+                <th>Comments</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for job_interview in job_interviews %}
             <tr>
+                <td>{{ job_interview.id }}</td>
                 <td>{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</td>
                 <td>{{ job_interview.schedule ? job_interview.schedule|date('H:i:s') : '' }}</td>
-                <td>{{ job_interview.Address }}</td>
-                <td>{{ job_interview.contactForName }}</td>
-                <td>{{ job_interview.contactSirName }}</td>
-                <td>{{ job_interview.contactTitle }}</td>
+                <td>{{ job_interview.comments }}</td>
                 <td>
-                    <a href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détails</a><br>
-                    <a href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">Modifier</a>
+                    <a href="{{ path('job_interview_show', {'id': job_interview.id}) }}">show</a>
+                    <a href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">aucun entretiens</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('job_interview_new') }}"class="btn btn-light">Nouvel Entretien</a>
+    <a href="{{ path('job_interview_new') }}">Create new</a>
 {% endblock %}

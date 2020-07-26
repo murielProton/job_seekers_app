@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier cette Candidature{% endblock %}
+{% block title %}Edit Application{% endblock %}
 
 {% block body %}
-    <h1>Modifier cette Candidature</h1>
+    <h1>Edit Application</h1>
 
-    {{ include('application/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('application/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <button  class="btn btn-light" role="button" href="{{ path('application_index') }}">retour à la liste</button>
-    
+    <a href="{{ path('application_index') }}">back to list</a>
 
     {{ include('application/_delete_form.html.twig') }}
 {% endblock %}

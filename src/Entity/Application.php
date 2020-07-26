@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity(repositoryClass=ApplicationRepository::class)
  */
@@ -21,29 +20,24 @@ class Application
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $webSiteName;
+    private $postingDate;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $companyName;
+    private $folowUpDate;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $addsWEBSite;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $jobAdvertisement;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $postingDate;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $folowUpDate;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -55,16 +49,15 @@ class Application
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="application")
+     */
+    private $company;
 
     /**
-     * @ORM\OneToOne(targetEntity=Contact::class, inversedBy="application", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Contact::class, mappedBy="application")
      */
     private $contact;
-
-    /**
-     * @ORM\OneToMany(targetEntity=JobInterview::class, mappedBy="application")
-     */
-    private $JobInterview;
 
     /**
      * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="application")
@@ -73,8 +66,7 @@ class Application
 
     public function __construct()
     {
-        $this->contact = new Contact();
-        $this->JobInterview = new ArrayCollection();
+        $this->contact = new ArrayCollection();
         $this->answer = new ArrayCollection();
     }
 
@@ -83,26 +75,38 @@ class Application
         return $this->id;
     }
 
-    public function getWebSiteName(): ?string
+    public function getPostingDate(): ?\DateTimeInterface
     {
-        return $this->webSiteName;
+        return $this->postingDate;
     }
 
-    public function setWebSiteName(?string $webSiteName): self
+    public function setPostingDate(?\DateTimeInterface $postingDate): self
     {
-        $this->webSiteName = $webSiteName;
+        $this->postingDate = $postingDate;
 
         return $this;
     }
 
-    public function getCompanyName(): ?string
+    public function getFolowUpDate(): ?\DateTimeInterface
     {
-        return $this->companyName;
+        return $this->folowUpDate;
     }
 
-    public function setCompanyName(string $companyName): self
+    public function setFolowUpDate(?\DateTimeInterface $folowUpDate): self
     {
-        $this->companyName = $companyName;
+        $this->folowUpDate = $folowUpDate;
+
+        return $this;
+    }
+
+    public function getAddsWEBSite(): ?string
+    {
+        return $this->addsWEBSite;
+    }
+
+    public function setAddsWEBSite(?string $addsWEBSite): self
+    {
+        $this->addsWEBSite = $addsWEBSite;
 
         return $this;
     }
@@ -115,31 +119,6 @@ class Application
     public function setJobAdvertisement(?string $jobAdvertisement): self
     {
         $this->jobAdvertisement = $jobAdvertisement;
-
-        return $this;
-    }
-
-    public function getPostingDate(): ?\DateTimeInterface
-    {
-        return $this->postingDate;
-    }
-
-    public function setPostingDate(\DateTimeInterface $postingDate): self
-    {
-       // $postingDate=date('H:m:s j, F, Y');
-        $this->postingDate = $postingDate;
-
-        return $this;
-    }
-
-    public function getFolowUpDate(): ?\DateTimeInterface
-    {
-        return $this->folowUpDate;
-    }
-
-    public function setFolowUpDate(\DateTimeInterface $folowUpDate): self
-    {
-        $this->folowUpDate = $folowUpDate;
 
         return $this;
     }
@@ -161,50 +140,50 @@ class Application
         return $this->comments;
     }
 
-    public function setComments(string $comments): self
+    public function setComments(?string $comments): self
     {
         $this->comments = $comments;
 
         return $this;
     }
 
-    public function getContact(): ?Contact
+    public function getCompany(): ?Company
     {
-        return $this->contact;
+        return $this->company;
     }
 
-    public function setContact(?Contact $contact): self
+    public function setCompany(?Company $company): self
     {
-        $this->contact = $contact;
+        $this->company = $company;
 
         return $this;
     }
 
     /**
-     * @return Collection|JobInterview[]
+     * @return Collection|Contact[]
      */
-    public function getJobInterview(): Collection
+    public function getContact(): Collection
     {
-        return $this->JobInterview;
+        return $this->contact;
     }
 
-    public function addJobInterview(JobInterview $jobInterview): self
+    public function addContact(Contact $contact): self
     {
-        if (!$this->JobInterview->contains($jobInterview)) {
-            $this->JobInterview[] = $jobInterview;
-            $jobInterview->setApplication($this);
+        if (!$this->contact->contains($contact)) {
+            $this->contact[] = $contact;
+            $contact->setApplication($this);
         }
 
         return $this;
     }
 
-    public function removeJobInterview(JobInterview $jobInterview): self
+    public function removeContact(Contact $contact): self
     {
-        if ($this->JobInterview->contains($jobInterview)) {
-            $this->JobInterview->removeElement($jobInterview);
+        if ($this->contact->contains($contact)) {
+            $this->contact->removeElement($contact);
             // set the owning side to null (unless already changed)
-            if ($jobInterview->getApplication() === $this) {
-                $jobInterview->setApplication(null);
+            if ($contact->getApplication() === $this) {
+                $contact->setApplication(null);
             }
         }
 
