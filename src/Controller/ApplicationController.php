@@ -1,9 +1,10 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\Entity\Application;
-use App\Form\Application1Type;
+use App\Form\ApplicationType;
 use App\Repository\ApplicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApplicationController extends AbstractController
 {
     /**
-     * @Route("/", name="application_index", methods={"GET"})
+     * @Route("/job_seekers_app", name="slash")
+     */
+    public function slash()
+    {
+        return $this->render('application/slash.html.twig', [
+            'controller_name' => 'ApplicationController',
+        ]);
+    }
+
+    /**
+     * @Route("/job_seekers_app/home", name="home")
+     */
+    public function home()
+    {
+        return $this->render('application/home.html.twig', [
+            'controller_name' => 'ApplicationController',
+        ]);
+    }
+
+    /**
+     * @Route("/job_seekers_app/index/application", name="application_index", methods={"GET"})
      */
     public function index(ApplicationRepository $applicationRepository): Response
     {
@@ -26,12 +47,12 @@ class ApplicationController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="application_new", methods={"GET","POST"})
+     * @Route("/job_seekers_app/new/application", name="application_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $application = new Application();
-        $form = $this->createForm(Application1Type::class, $application);
+        $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +84,7 @@ class ApplicationController extends AbstractController
      */
     public function edit(Request $request, Application $application): Response
     {
-        $form = $this->createForm(Application1Type::class, $application);
+        $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

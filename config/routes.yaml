@@ -1,3 +1,32 @@
-index:
-    path: /
-    controller: App\Controller\DefaultController::index
+slash:
+    path: /job_seekers_app
+    controller: App\Controller\ApplicationController::slash
+
+home:
+    path: /job_seekers_app/home
+    controller: App\Controller\ApplicationController::home
+
+application_index:
+    path: /job_seekers_app/index/application
+    controller: App\Controller\ApplicationController::index
+
+application_new:
+    path: /job_seekers_app/home/job_seekers_app/new/application
+    controller: App\Controller\ApplicationController::new
+
+answer_new:
+    path: /job_seekers_app/new/answer
+    controller: App\Controller\AnswerController::new
+
+contact_index:
+    path: /job_seekers_app/index/contact
+    controller: App\Controller\ContactController::index
+
+contact_new:
+    path: /job_seekers_app/new/contact
+    controller: App\Controller\ContactController::new
+
+job_interview_new:
+    path: /job_seekers_app/new/job_interview
+    controller: App\Controller\JobInterviewController::new   
+

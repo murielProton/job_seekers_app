@@ -130,3 +130,22 @@ php bin/console doctrine:migrations:generate
 php bin/console doctrine:migrations:migrate
 php bin/console doctrine:migrations:create
 -------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------CASE----------------------------------------------------------
+variable || champ || field == Camel CASE
+class == Pascal CASE
+routes 
+nom de fichier >Controller && >Entity && >Form && > Repository == Pascal CASE
+nom de fichier >templates == Snake CASE snake_case
+nom de la route dans le fichier config>routes.yaml== Snake CASE
+job_interview_new:
+    path: /new/job_interview
+    controller: App\Controller\JobInterviewController::new 
+**nom_de_la_route**:
+    path: /new/job_interview
+    controller: App\Controller\JobInterviewController::new 
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------NOMMER---------------------------------------------------------
+Nommer une route
+essayer autant que possible de garder la corelation entre le nom de la route, son chemin et la fonction du cotrolleur dont
+elle est issue.
+-------------------------------------------------------------------------------------------------------------------------

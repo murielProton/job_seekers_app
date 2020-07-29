@@ -20,6 +20,11 @@ class Application
     private $id;
 
     /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    private $titleOfApplication;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $postingDate;
@@ -73,6 +78,18 @@ class Application
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitleOfApplication(): ?string
+    {    
+    return $this->titleOfApplication;
+    }
+
+    public function setTitleOfApplication(?string $jobAdvertisement): self
+    {    
+        $this->titleOfApplication = $titleOfApplication;
+
+        return $this;
     }
 
     public function getPostingDate(): ?\DateTimeInterface

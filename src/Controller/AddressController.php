@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Address;
-use App\Form\Address1Type;
+use App\Form\AddressType;
 use App\Repository\AddressRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AddressController extends AbstractController
     public function new(Request $request): Response
     {
         $address = new Address();
-        $form = $this->createForm(Address1Type::class, $address);
+        $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class AddressController extends AbstractController
      */
     public function edit(Request $request, Address $address): Response
     {
-        $form = $this->createForm(Address1Type::class, $address);
+        $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
