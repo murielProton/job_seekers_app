@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Answer{% endblock %}
+{% block title %}Nouvelle Réponse{% endblock %}
 
 {% block body %}
-    <h1>Create new Answer</h1>
+    <h1>Nouvelle Réponse</h1>
 
     {{ include('answer/_form.html.twig') }}
+
+    <a href="{{ path('job_interview_new') }}" class="btn btn-light" role="button">Nouvel Entretien</a>
 
 
 {% endblock %}

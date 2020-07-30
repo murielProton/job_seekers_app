@@ -38,7 +38,12 @@ class JobInterviewType extends AbstractType
                 'label'=> "Réponse",
                 'required' => false, 
             ])
-            ->add('adress')
+            ->add('adress', ChoiceType::class, [
+                /*'class' => Adress::class,
+                'choice_label' => "date",*/
+                'label'=> "Adresse",
+                'required' => false, 
+            ])
         ;
     }
 

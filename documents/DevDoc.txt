@@ -99,6 +99,7 @@ use App\Entity\Contact;
     }
 -------------------------------------------------------------------------------------------------------------------------
 ---------------------------------CHANGER LABEL FORMULAIRE||TRADUCTION ANGLAIS->FRANCAIS----------------------------------
+//On est oblier d'ajouter le type avant d'ajouter le label.
 //Aller dans src/Form/ApplicationType.php
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -107,7 +108,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType; //?? A VERIFIER
 use Symfony\Bridge\Doctrine\Form\Type\ChoiceType; //?? A VERIFIER
 //exemple de correction à ajouter au $builder
-->add('webSiteName', TextType::class,  ['label' => "nom du site WEB"])
+->add('webSiteName', ****Type::class,  ['label' => "nom du site WEB"])
 ->add('**nom data base**', ****Type::class,  ['label' => "****"])
 
 // Documentation officiel sur les Form Types References
@@ -149,4 +150,35 @@ job_interview_new:
 Nommer une route
 essayer autant que possible de garder la corelation entre le nom de la route, son chemin et la fonction du cotrolleur dont
 elle est issue.
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------ENTITY TYPE FORMULAIRE RADIO-----------------------------------------------
+            ->add('textOfAnswer',ChoiceType::class,[
+                'choices'  => [
+                    "A recontacter." => "A recontacter.",
+                    "Me recontacte." => "Me recontacte.",
+                    "Entretien téléphonique." => "Entretien téléphonique.",
+                    "Entretien à distance." => "Entretien à distance.",
+                    "Entretien." => "Entretien.",
+                    "Embauché(e)!" => "Embauché(e)!",
+                ],
+                
+                'expanded' => true,
+                'multiple' => false,
+                'required' => false,
+                'label' => "réponse",
+                ])
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------ENTITY TYPE FORMULAIRE Menu Déroulant-----------------------------------------------
+            ->add('textOfAnswer',ChoiceType::class,[
+                'choices'  => [
+                    "A recontacter." => "A recontacter.",
+                    "Me recontacte." => "Me recontacte.",
+                    "Entretien téléphonique." => "Entretien téléphonique.",
+                    "Entretien à distance." => "Entretien à distance.",
+                    "Entretien." => "Entretien.",
+                    "Embauché(e)!" => "Embauché(e)!",
+                ],
+                'required' => false,
+                'label' => "réponse",
+                ])
 -------------------------------------------------------------------------------------------------------------------------

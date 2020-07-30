@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 class AnswerType extends AbstractType
 {
@@ -22,20 +23,18 @@ class AnswerType extends AbstractType
                 'widget' => 'single_text',
                 'required'   => true
             ])
-            ->add('textOfAnswer',ChoiceType::class,array(
-                'choices'  => array(
+            ->add('textOfAnswer',ChoiceType::class,[
+                'choices'  => [
                     "A recontacter." => "A recontacter.",
                     "Me recontacte." => "Me recontacte.",
                     "Entretien téléphonique." => "Entretien téléphonique.",
                     "Entretien à distance." => "Entretien à distance.",
                     "Entretien." => "Entretien.",
                     "Embauché(e)!" => "Embauché(e)!",
-                ),
-                'expanded' => true,
-                'multiple' => false,
+                ],
                 'required' => false,
-                'label' => "réponse",
-            ))
+                'label' => "Réponse",
+                ])
             ->add('comments', TextareaType::class,  [
                 'label' => "Commentaires",
                 'required'   => false,
@@ -47,13 +46,6 @@ class AnswerType extends AbstractType
                 'label'=> "Annonce*",
                 'required' => true, 
             ])
-            ->add('jobInterview', ChoiceType::class, [
-                /*'class' => Application::class,
-                'choice_label' => "title",*/
-                'label'=> "Entretien*",
-                'required' => false, 
-            ])
-
         ;
     }
 
