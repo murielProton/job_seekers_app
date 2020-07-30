@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Answer;
+use App\Entity\Application;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -40,12 +41,18 @@ class AnswerType extends AbstractType
                 'required'   => false,
                 'attr' => ['rows' => '4', 'cols' => '111']
             ])
-            ->add('application', EntityType::class, [
-                'class' => Application::class,
-                'choice_label' => "Candidature*",
-                'required' => true,
+            ->add('application', ChoiceType::class, [
+                /*'class' => Application::class,
+                'choice_label' => "title",*/
+                'label'=> "Annonce*",
+                'required' => true, 
             ])
-            ->add('jobInterview')
+            ->add('jobInterview', ChoiceType::class, [
+                /*'class' => Application::class,
+                'choice_label' => "title",*/
+                'label'=> "Entretien*",
+                'required' => false, 
+            ])
 
         ;
     }

@@ -20,11 +20,6 @@ class Application
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
-     */
-    private $titleOfApplication;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $postingDate;
@@ -69,6 +64,11 @@ class Application
      */
     private $answer;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $title;
+
     public function __construct()
     {
         $this->contact = new ArrayCollection();
@@ -78,18 +78,6 @@ class Application
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitleOfApplication(): ?string
-    {    
-    return $this->titleOfApplication;
-    }
-
-    public function setTitleOfApplication(?string $jobAdvertisement): self
-    {    
-        $this->titleOfApplication = $titleOfApplication;
-
-        return $this;
     }
 
     public function getPostingDate(): ?\DateTimeInterface
@@ -234,6 +222,18 @@ class Application
                 $answer->setApplication(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

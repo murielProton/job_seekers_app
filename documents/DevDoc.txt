@@ -4,7 +4,7 @@ cd Epitech/Rendu/job_seekers_app
 //commande 
 symfony server:start
 //Aller dans le moteur de recherche internet, taper l'adresse HTTPS suivante
-https://127.0.0.1:8000/application/
+https://127.0.0.1:8000/job_seekers_app
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------VERIFIER BASE SQL----------------------------------------------------
 //Aller dans le terminaln, taper la commande :
@@ -29,6 +29,7 @@ SELECT * FROM **Nom de table** WHERE **Condition**;
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------CHANGER L'ENTITY-----------------------------------------------------
 //si l'ENTITY n'est pas convenable dans sa Xième version, changer l'info dans src>Entity>**NOM_ENTITY**
+php bin/console make:entity
 // Aller dans le terminal à la racine de job_seekers_app, taper les commandes :
 php bin/console make:migration
 php bin/console doctrine:schema:update --force

@@ -20,6 +20,10 @@ class ApplicationType extends AbstractType
                 'label' => "Entreprise",
                 'required'   => false
             ])
+            ->add('title', TextType::class, [
+                'label' => "Titre de l'Annonce*",
+                'required'   => true
+            ])
             ->add('postingDate', DateType::class, [
                 'label' => "Date de la première prise de contact*",
                 'widget' => 'single_text',
