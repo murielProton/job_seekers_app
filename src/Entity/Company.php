@@ -25,7 +25,7 @@ class Company
     private $companyName;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $companyWEBSite;
 
@@ -40,7 +40,7 @@ class Company
     private $application;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="companies")
+     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="companies", cascade={"persist", "remove"})
      */
     private $contact;
 

@@ -32,7 +32,7 @@ class ContactType extends AbstractType
                 'required'   => false
             ])
             ->add('eMail', EmailType::class, [
-                'label' => "Adresse couriel",
+                'label' => "Adresse courriel",
                 'required' => false
             ])
         ;

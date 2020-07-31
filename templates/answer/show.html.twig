@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Answer{% endblock %}
+{% block title %}Détail de la Réponse{% endblock %}
 
 {% block body %}
-    <h1>Answer</h1>
+    <h1>Détail de la Réponse</h1>
 
     <table class="table">
         <tbody>
@@ -16,19 +16,19 @@
                 <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>TextOfAnswer</th>
+                <th>Réponse</th>
                 <td>{{ answer.textOfAnswer }}</td>
             </tr>
             <tr>
-                <th>Comments</th>
+                <th>Commentaires</th>
                 <td>{{ answer.comments }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('answer_index') }}">back to list</a>
+    <a href="{{ path('answer_index') }}">Retour à la Liste</a>
 
-    <a href="{{ path('answer_edit', {'id': answer.id}) }}">edit</a>
+    <a href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
 
     {{ include('answer/_delete_form.html.twig') }}
 {% endblock %}

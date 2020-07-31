@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Address index{% endblock %}
+{% block title %}Liste des Adresses{% endblock %}
 
 {% block body %}
-    <h1>Address index</h1>
+    <h1>Liste des Adresses</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Floor</th>
-                <th>Number</th>
-                <th>Way</th>
-                <th>PostCode</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>actions</th>
+                <th>Etage</th>
+                <th>Numéro</th>
+                <th>Rue/Chemin/Allée</th>
+                <th>Code Postal</th>
+                <th>Ville/Village</th>
+                <th>Pays</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,13 +29,13 @@
                 <td>{{ address.city }}</td>
                 <td>{{ address.country }}</td>
                 <td>
-                    <a href="{{ path('address_show', {'id': address.id}) }}">show</a>
-                    <a href="{{ path('address_edit', {'id': address.id}) }}">edit</a>
+                    <a href="{{ path('address_show', {'id': address.id}) }}">Détail</a>
+                    <a href="{{ path('address_edit', {'id': address.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Aucune Adresse en Base de Donnée</td>
             </tr>
         {% endfor %}
         </tbody>

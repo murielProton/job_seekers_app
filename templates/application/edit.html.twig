@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Application{% endblock %}
+{% block title %}Modifier la Candidature{% endblock %}
 
 {% block body %}
-    <h1>Edit Application</h1>
+    <h1>Modifier la Candidature</h1>
 
     {{ include('application/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('application_index') }}">back to list</a>
+    <a href="{{ path('application_index') }}">Retour à la Liste</a>
 
     {{ include('application/_delete_form.html.twig') }}
 {% endblock %}

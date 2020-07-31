@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company{% endblock %}
+{% block title %}Détail de l'Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Company</h1>
+    <h1>Détail de l'Entreprise</h1>
 
     <table class="table">
         <tbody>
@@ -12,23 +12,23 @@
                 <td>{{ company.id }}</td>
             </tr>
             <tr>
-                <th>CompanyName</th>
+                <th>Nom de l'Entreprise</th>
                 <td>{{ company.companyName }}</td>
             </tr>
             <tr>
-                <th>CompanyWEBSite</th>
+                <th>Site WEB</th>
                 <td>{{ company.companyWEBSite }}</td>
             </tr>
             <tr>
-                <th>Comments</th>
+                <th>Commentaires</th>
                 <td>{{ company.comments }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('company_index') }}">back to list</a>
+    <a href="{{ path('company_index') }}">Retour à la Liste</a>
 
-    <a href="{{ path('company_edit', {'id': company.id}) }}">edit</a>
+    <a href="{{ path('company_edit', {'id': company.id}) }}">Modifier</a>
 
     {{ include('company/_delete_form.html.twig') }}
 {% endblock %}

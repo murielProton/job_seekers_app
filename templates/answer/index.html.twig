@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Answer index{% endblock %}
+{% block title %}Index des Réponses{% endblock %}
 
 {% block body %}
-    <h1>Answer index</h1>
+    <h1>Index des Réponses</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Date</th>
-                <th>TextOfAnswer</th>
-                <th>Comments</th>
-                <th>actions</th>
+                <th>Réponse</th>
+                <th>Commentaires</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,13 +23,13 @@
                 <td>{{ answer.textOfAnswer }}</td>
                 <td>{{ answer.comments }}</td>
                 <td>
-                    <a href="{{ path('answer_show', {'id': answer.id}) }}">show</a>
-                    <a href="{{ path('answer_edit', {'id': answer.id}) }}">edit</a>
+                    <a href="{{ path('answer_show', {'id': answer.id}) }}">Détail</a>
+                    <a href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucune Réponse en Base de Donnée</td>
             </tr>
         {% endfor %}
         </tbody>
