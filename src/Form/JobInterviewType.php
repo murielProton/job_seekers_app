@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\JobInterview;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -32,16 +31,21 @@ class JobInterviewType extends AbstractType
                 'required'   => false,
                 'attr' => ['rows' => '2', 'cols' => '111']
             ])
+            ->add('company', CompanyType::class, [
+                'label' => "Entreprise",
+                'required'   => false
+            ])
             ->add('answer', ChoiceType::class, [
                 /*'class' => Answer::class,
-                'choice_label' => "date",*/
+                'choice_label' => "date", */
                 'label'=> "Réponse",
                 'required' => false, 
             ])
-            ->add('adress', ChoiceType::class, [
-                /*'class' => Adress::class,
-                'choice_label' => "date",*/
-                'label'=> "Adresse",
+
+            ->add('application', ChoiceType::class, [
+                /*'class' => Application::class,
+                'choice_label' => "title",*/
+                'label'=> "Candidature",
                 'required' => false, 
             ])
         ;

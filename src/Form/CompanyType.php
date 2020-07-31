@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Form;
-
+use App\Entity\JobInterview;
+use App\Entity\Contact;
+use App\Entity\Address;
 use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+//use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +30,7 @@ class CompanyType extends AbstractType
                 'attr' => ['rows' => '2', 'cols' => '111']
             ])*/
             ->add('contact', ContactType::class, [
-                'label' => "Contact :",
+                'label' => "Contact",
                 'required'   => false
             ])
             ->add('address', AddressType::class, [

@@ -25,6 +25,11 @@ class Application
     private $postingDate;
 
     /**
+     * @ORM\Column(type="string", length=20, nullable=False)
+     */
+    private $title;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $folowUpDate;
@@ -65,14 +70,15 @@ class Application
     private $answer;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\OneToMany(targetEntity=JobInterview::class, mappedBy="application")
      */
-    private $title;
+    private $jobInterviews;
 
     public function __construct()
     {
         $this->contact = new ArrayCollection();
         $this->answer = new ArrayCollection();
+        $this->jobInterviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,6 +240,37 @@ class Application
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|JobInterview[]
+     */
+    public function getJobInterviews(): Collection
+    {
+        return $this->jobInterviews;
+    }
+
+    public function addJobInterview(JobInterview $jobInterview): self
+    {
+        if (!$this->jobInterviews->contains($jobInterview)) {
+            $this->jobInterviews[] = $jobInterview;
+            $jobInterview->setApplication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJobInterview(JobInterview $jobInterview): self
+    {
+        if ($this->jobInterviews->contains($jobInterview)) {
+            $this->jobInterviews->removeElement($jobInterview);
+            // set the owning side to null (unless already changed)
+            if ($jobInterview->getApplication() === $this) {
+                $jobInterview->setApplication(null);
+            }
+        }
 
         return $this;
     }

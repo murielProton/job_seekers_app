@@ -32,8 +32,8 @@ class AnswerType extends AbstractType
                     "Entretien." => "Entretien.",
                     "Embauché(e)!" => "Embauché(e)!",
                 ],
-                'required' => false,
                 'label' => "Réponse",
+                'required' => false,
                 ])
             ->add('comments', TextareaType::class,  [
                 'label' => "Commentaires",

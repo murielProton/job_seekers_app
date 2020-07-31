@@ -18,12 +18,12 @@ class JobInterview
     private $id;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=false)
      */
     private $dateOfInterview;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="time", nullable=false)
      */
     private $schedule;
 
@@ -41,6 +41,16 @@ class JobInterview
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="jobInerview", cascade={"persist", "remove"})
      */
     private $adress;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Company::class, inversedBy="jobInterview", cascade={"persist", "remove"})
+     */
+    private $company;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="jobInterviews")
+     */
+    private $application;
 
     public function getId(): ?int
     {
@@ -109,6 +119,30 @@ class JobInterview
     public function setAdress(?Address $adress): self
     {
         $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(?Application $application): self
+    {
+        $this->application = $application;
 
         return $this;
     }

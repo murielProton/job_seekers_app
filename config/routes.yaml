@@ -11,7 +11,7 @@ application_index:
     controller: App\Controller\ApplicationController::index
 
 application_new:
-    path: /job_seekers_app/home/job_seekers_app/new/application
+    path: /job_seekers_app/new/application
     controller: App\Controller\ApplicationController::new
 
 answer_new:

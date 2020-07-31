@@ -48,6 +48,12 @@ class Company
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="company", cascade={"persist", "remove"})
      */
     private $address;
+    
+
+    /**
+     * @ORM\OneToOne(targetEntity=JobInterview::class, mappedBy="company", cascade={"persist", "remove"})
+     */
+    private $jobInterview;
 
     public function __construct()
     {
@@ -161,6 +167,24 @@ class Company
     public function setAddress(?Address $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getJobInterview(): ?JobInterview
+    {
+        return $this->jobInterview;
+    }
+
+    public function setJobInterview(?JobInterview $jobInterview): self
+    {
+        $this->jobInterview = $jobInterview;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newCompany = null === $jobInterview ? null : $this;
+        if ($jobInterview->getCompany() !== $newCompany) {
+            $jobInterview->setCompany($newCompany);
+        }
 
         return $this;
     }

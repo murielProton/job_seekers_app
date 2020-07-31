@@ -16,13 +16,13 @@ class ApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('company', CompanyType::class, [
-                'label' => "Entreprise",
-                'required'   => false
-            ])
             ->add('title', TextType::class, [
                 'label' => "Titre de l'Annonce*",
                 'required'   => true
+            ])
+            ->add('company', CompanyType::class, [
+                'label' => "Entreprise",
+                'required'   => false
             ])
             ->add('postingDate', DateType::class, [
                 'label' => "Date de la première prise de contact*",
