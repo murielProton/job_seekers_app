@@ -55,7 +55,7 @@ class Application
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="application" ,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="application", cascade={"persist", "remove"})
      */
     private $company;
 

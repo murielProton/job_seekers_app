@@ -22,11 +22,11 @@ class ApplicationType extends AbstractType
                 'required'   => false
             ])
             ->add('title', TextType::class, [
-                'label' => "Titre de l'Annonce*",
+                'label' => "Titre de l'Annonce**",
                 'required'   => true
             ])
             ->add('postingDate', DateType::class, [
-                'label' => "Date de la première prise de contact*",
+                'label' => "Date de la première prise de contact**",
                 'widget' => 'single_text',
                 'required'   => true
             ])

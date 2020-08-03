@@ -25,7 +25,8 @@ class CompanyType extends AbstractType
             
             ->add('companyWEBSite', TextType::class,  [
                 'label' => "Site WEB de l'Entreprise",
-                'required'   => false
+                'required'   => false,
+                'csrf_protection' => null
                 ])
             ->add('comments', TextareaType::class,  [
                 'label' => "Commentaires sur l'entreprise",

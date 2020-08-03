@@ -30,9 +30,14 @@ class CompanyController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        //$events= new events;
+
         $company = new Company();
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
+        /*if ($form->isValid()) {
+            $companyWEBSite = $this->container->get('security.context')->getToken()->getCompanyWEBSite();
+            $events->setCompanyWEBSite($companyWEBSite);*/
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

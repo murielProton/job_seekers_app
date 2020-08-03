@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Titre</th>
                 <th>Date</th>
                 <th>Date de suivi</th>
                 <th>Site WEB de l'Annonce</th>
@@ -22,6 +23,7 @@
         {% for application in applications %}
             <tr>
                 <td>{{ application.id }}</td>
+                <td>{{ application.title }}</td>
                 <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
                 <td>{{ application.addsWEBSite }}</td>
