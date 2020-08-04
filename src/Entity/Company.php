@@ -20,7 +20,7 @@ class Company
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
     private $companyName;
 

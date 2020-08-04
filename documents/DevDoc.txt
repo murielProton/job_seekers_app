@@ -126,6 +126,8 @@ Créer || Modifier une entité || Entity
 php bin/console make:entity
 Après avoir fait des changements manuels dans l'entité
 php bin/console make:entity --regenerate
+créer un Menu
+php bin/console ???? !_!
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------DEBUGG---------------------------------------------------------
 //SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'text_of_answer' at row 1
@@ -190,9 +192,16 @@ elle est issue.
 utiliser le langage JQuery exemple : job_seekers_app/templates/application/_form.html.twig
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------CHAR LENGTH-------------------------------------------------------
+//Lecture du tableau : 
+Le nouveau champs je veux le nommer contiendra name, regardez dans le colonne 3 si vous voyez quelque chose d'approchant.
+Si oui copier le length et le type dans 
+- job_seekers_app/src/Entity/Xx.php &
+- & dans /home/proton/Epitech/Rendu/job_seekers_app/src/Form/XxType.php
+Si non renseignez le tableau avec le nouveau champs et ses attributs.
+
 TYPE.PHP ----- TYPE ENTITY --- FIELD NAME ----------- LENGTH
 --------------------------------------------------------------
-TextType ----- string -------- name ----------------- 150
+TextType ----- string -------- name ----------------- 50
 TextType ----- string -------- WEBSite--------------- 150
 TextareaType - string -------- comments-------------- 1200
 NumberType --- integer ------- floor ---------------- 3
@@ -203,7 +212,6 @@ TextType ----- string -------- city ----------------- 100
 CountryType -- string -------- country -------------- 45
 ChoiceType --- string -------- text ----------------- 1200
 TextType ----- string -------- title ---------------- 60
-TextType ----- string -------- name person ---------- 40
 TelType ------ integer ------- telephone ------------ 14
 EmailType ---- string -------- e-mail --------------- 320
 

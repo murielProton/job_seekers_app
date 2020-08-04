@@ -25,12 +25,12 @@ class Contact
     private $contactTitle;
 
     /**
-     * @ORM\Column(type="string", length=40, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $forName;
 
     /**
-     * @ORM\Column(type="string", length=40, nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
     private $sirName;
 
