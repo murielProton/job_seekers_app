@@ -24,8 +24,8 @@ class ContactType extends AbstractType
                 'required'   => false
             ])
             ->add('sirName', TextType::class, [
-                'label' => "Nom de Famille",
-                'required'   => false
+                'label' => "Nom de Famille*",
+                'required'   => true
             ])
             ->add('telephone', TelType::class, [
                 'label' => "Numero de téléphone",

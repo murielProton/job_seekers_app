@@ -30,7 +30,7 @@ class Contact
     private $forName;
 
     /**
-     * @ORM\Column(type="string", length=40, nullable=true)
+     * @ORM\Column(type="string", length=40, nullable=false)
      */
     private $sirName;
 
