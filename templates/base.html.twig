@@ -1,7 +1,31 @@
 <!DOCTYPE html>
+<script>
+
+	/* When the user clicks on the button, 
+							toggle between hiding and showing the dropdown content */
+function myFunction() {
+document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+if (! event.target.matches('.dropbtn')) {
+var dropdowns = document.getElementsByClassName("dropdown-content");
+var i;
+for (i = 0; i < dropdowns.length; i++) {
+var openDropdown = dropdowns[i];
+if (openDropdown.classList.contains('show')) {
+openDropdown.classList.remove('show');
+}
+}
+}
+}
+</script>
 <html>
 	<head>
 		<meta charset="UTF-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
 			{% block title %}Gérez vos candidatures!
 			{% endblock %}
@@ -10,7 +34,7 @@
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">
 			<link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
-
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		{% endblock %}
 		{% block javascripts %}
 			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -20,30 +44,64 @@
 		{% endblock %}
 	</head>
 	{% block navbar %}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			{#pour les path il faut aller chercher l'info dans les contrôleurs #}
-			<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
-			{#<a class="navbar-brand" href="{{ path('application_new') }}">Nouvelle Candidature</a>#}
-			<a class="navbar-brand" href="{{ path('answer_new') }}">Nouvelle Réponse</a>
-			<a class="navbar-brand" href="{{ path('job_interview_new') }}">Nouvelle Entretien</a>
-			{#<a class="navbar-brand" href="{{ path('application_index') }}">Liste de vos Candidatures</a>#}
-			<a class="navbar-brand" href="{{ path('job_interview_index') }}">Liste de vos entretiens</a>
-			<a class="navbar-brand" href="{{ path('company_index') }}">Liste des entreprises</a>
-			<a class="navbar-brand" href="{{ path('address_index') }}">Liste des adresses</a>
-			<a class="navbar-brand" href="{{ path('contact_index') }}">Répertoire</a>
-			<div class="navbar-brand dropdown">
-				<button class="navbar-brand dropbtn">Candidature
-					<i class="fa fa-caret-down"></i>
-				</button>
-				<div class="navbar-brand dropdown-content">
-					<a href="{{ path('application_new') }}">Nouvelle Candidature</a>
-					<a href="{{ path('application_index') }}">Liste de vos Candidatures</a>
-				</div>u
-		</nav>
-        <?php echo $view['knp_menu']->render('App:Builder:mainMenu') ?>
-		{% endblock %}
-		<body>
-			{% block body %}{% endblock %}
-		</body>
-	</html>
-</html>
+		{#<nav class="navbar navbar-expand-lg navbar-light bg-light">
+									pour les path il faut aller chercher l'info dans les contrôleurs
+									<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
+									<a class="navbar-brand" href="{{ path('application_new') }}">Nouvelle Candidature</a>
+									<a class="navbar-brand" href="{{ path('answer_new') }}"> Nouvelle Réponse</a>
+									<a class="navbar-brand" href="{{ path('job_interview_new') }}">Nouvelle Entretien</a>
+									<a class="navbar-brand" href="{{ path('application_index') }}">Liste de vos Candidatures</a>
+									<a class="navbar-brand" href="{{ path('job_interview_index') }}">Liste de vos entretiens</a>
+									<a class="navbar-brand" href="{{ path('company_index') }}">Liste des entreprises</a>
+									<a class="navbar-brand" href="{{ path('address_index') }}">Liste des adresses</a>
+									<a class="navbar-brand" href="{{ path('contact_index') }}">Répertoire</a>
+								</nav> #}
+
+		<div class="navbar dropdown navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand dropdown">Job Seekers</a>
+			<a class="navbar-brand dropdown" href="{{ path('home') }}">Accueil</a>
+			<div class="navbar-brand dropdown dropbtn">
+				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Candidature</div>
+				<div class="dropdown-content">
+					<a href="{{ path('application_new') }}">Nouvelle</a>
+				</div>
+				<div class="dropdown-content">
+					<a href="{{ path('application_index') }}">Liste</a>
+				</div>
+			</div>
+			<div class="navbar-brand dropdown dropbtn">
+				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Réponse</div>
+				<div class="dropdown-content">
+					<a href="{{ path('answer_new') }}">Nouvelle</a>
+				</div>
+				<div class="dropdown-content">
+					<a href="{{ path('answer_index') }}">Liste</a>
+				</div>
+			</div>
+			<div class="navbar-brand dropdown dropbtn">
+				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Entretiens</div>
+				<div class="dropdown-content">
+					<a href="{{ path('job_interview_new') }}">Nouveau</a>
+				</div>
+				<div class="dropdown-content">
+					<a href="{{ path('job_interview_index') }}">Liste</a>
+				</div>
+			</div>
+			<div class="navbar-brand dropdown dropbtn">
+				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Contact</div>
+				<div class="dropdown-content">
+					<a href="{{ path('contact_new') }}">Nouveau Contact</a>
+				</div>
+				<div class="dropdown-content">
+					<a href="{{ path('company_index') }}">Entreprises</a>
+				</div>
+				<div class="dropdown-content">
+					<a href="{{ path('contact_index') }}">Repertoir</a>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	<body>
+		{% block body %}{% endblock %}
+	</body>
+</html></html>

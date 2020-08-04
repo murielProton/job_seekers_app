@@ -22,6 +22,10 @@ answer_new:
     path: /job_seekers_app/new/answer
     controller: App\Controller\AnswerController::new
 
+answer_index:
+    path: /job_seekers_app/index/answer
+    controller: App\Controller\AnswerController::index
+
 company_index:
     path: /job_seekers_app/index/company
     controller: App\Controller\CompanyController::index
