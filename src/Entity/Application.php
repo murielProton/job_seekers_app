@@ -25,7 +25,7 @@ class Application
     private $postingDate;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=False)
+     * @ORM\Column(type="string", length=60, nullable=False)
      */
     private $title;
 
@@ -35,7 +35,7 @@ class Application
     private $folowUpDate;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $addsWEBSite;
 
@@ -50,7 +50,7 @@ class Application
     private $unsolicited;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", length=1200, nullable=true)
      */
     private $comments;
 

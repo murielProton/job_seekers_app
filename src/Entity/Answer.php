@@ -26,12 +26,12 @@ class Answer
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=1200, nullable=true)
      */
     private $textOfAnswer;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", length=1200, nullable=true)
      */
     private $comments;
 

@@ -20,27 +20,27 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $contactTitle;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $forName;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $sirName;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", length=14, nullable=true)
      */
     private $telephone;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=320, nullable=true)
      */
     private $eMail;
 

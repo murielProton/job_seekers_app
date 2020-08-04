@@ -33,6 +33,8 @@ php bin/console make:entity
 // Aller dans le terminal à la racine de job_seekers_app, taper les commandes :
 php bin/console make:migration
 php bin/console doctrine:schema:update --force
+//si vous avez fait des changement manuels dans l'entité
+php bin/console make:entity --regenerate
 -------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------BARRE DE NAVIGATION----------------------------------------------------
 //dans le fichier templates>base.html.twig, mettre la barre de nav en dehors de <body></body> et juste après 
@@ -122,6 +124,8 @@ use https://github.com/uxsolutions/bootstrap-datepicker
 ----------------------------------------------------COMMANDES SYMFONY----------------------------------------------------
 Créer || Modifier une entité || Entity
 php bin/console make:entity
+Après avoir fait des changements manuels dans l'entité
+php bin/console make:entity --regenerate
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------DEBUGG---------------------------------------------------------
 //SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'text_of_answer' at row 1
@@ -185,4 +189,23 @@ elle est issue.
 -------------------------------------------------ON CLIC || interactivité------------------------------------------------
 utiliser le langage JQuery exemple : job_seekers_app/templates/application/_form.html.twig
 -------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------CHAR LENGTH-------------------------------------------------------
+TYPE.PHP ----- TYPE ENTITY --- FIELD NAME ----------- LENGTH
+--------------------------------------------------------------
+TextType ----- string -------- name ----------------- 150
+TextType ----- string -------- WEBSite--------------- 150
+TextareaType - string -------- comments-------------- 1200
+NumberType --- integer ------- floor ---------------- 3
+TextType ----- string -------- way ------------------ 100
+NumberType --- integer ------- street number -------- 100
+NumberType --- integer ------- intenational potcode - 10
+TextType ----- string -------- city ----------------- 100
+CountryType -- string -------- country -------------- 45
+ChoiceType --- string -------- text ----------------- 1200
+TextType ----- string -------- title ---------------- 60
+TextType ----- string -------- name person ---------- 40
+TelType ------ integer ------- telephone ------------ 14
+EmailType ---- string -------- e-mail --------------- 320
+
+//la différence entre string et text = string 255 char && text 30 000 char
 -------------------------------------------------------------------------------------------------------------------------

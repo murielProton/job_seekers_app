@@ -28,7 +28,7 @@ class JobInterview
     private $schedule;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", length=1200, nullable=true)
      */
     private $comments;
 

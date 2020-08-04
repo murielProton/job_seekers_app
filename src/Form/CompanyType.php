@@ -22,7 +22,6 @@ class CompanyType extends AbstractType
                 'label' => "Nom de l'entreprise ou association*",
                 'required'   => true
             ])
-            
             ->add('companyWEBSite', TextType::class,  [
                 'label' => "Site WEB de l'Entreprise",
                 'required'   => false,

@@ -20,17 +20,17 @@ class Company
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
     private $companyName;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $companyWEBSite;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=1200, nullable=true)
      */
     private $comments;
 

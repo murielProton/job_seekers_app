@@ -6,6 +6,10 @@ home:
     path: /job_seekers_app/home
     controller: App\Controller\ApplicationController::home
 
+address_index:
+    path: /job_seekers_app/index/address
+    controller: App\Controller\AddressController::index
+
 application_index:
     path: /job_seekers_app/index/application
     controller: App\Controller\ApplicationController::index
@@ -17,6 +21,10 @@ application_new:
 answer_new:
     path: /job_seekers_app/new/answer
     controller: App\Controller\AnswerController::new
+
+company_index:
+    path: /job_seekers_app/index/company
+    controller: App\Controller\CompanyController::index
 
 contact_index:
     path: /job_seekers_app/index/contact
