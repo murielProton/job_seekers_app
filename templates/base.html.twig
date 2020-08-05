@@ -24,7 +24,6 @@ openDropdown.classList.remove('show');
 <html>
 	<head>
 		<meta charset="UTF-8">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
 			{% block title %}Gérez vos candidatures!
@@ -45,61 +44,78 @@ openDropdown.classList.remove('show');
 	</head>
 	{% block navbar %}
 		{#<nav class="navbar navbar-expand-lg navbar-light bg-light">
-									pour les path il faut aller chercher l'info dans les contrôleurs
-									<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
-									<a class="navbar-brand" href="{{ path('application_new') }}">Nouvelle Candidature</a>
-									<a class="navbar-brand" href="{{ path('answer_new') }}"> Nouvelle Réponse</a>
-									<a class="navbar-brand" href="{{ path('job_interview_new') }}">Nouvelle Entretien</a>
-									<a class="navbar-brand" href="{{ path('application_index') }}">Liste de vos Candidatures</a>
-									<a class="navbar-brand" href="{{ path('job_interview_index') }}">Liste de vos entretiens</a>
-									<a class="navbar-brand" href="{{ path('company_index') }}">Liste des entreprises</a>
-									<a class="navbar-brand" href="{{ path('address_index') }}">Liste des adresses</a>
-									<a class="navbar-brand" href="{{ path('contact_index') }}">Répertoire</a>
-								</nav> #}
+																									pour les path il faut aller chercher l'info dans les contrôleurs
+																									<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
+																									<a class="navbar-brand" href="{{ path('application_new') }}">Nouvelle Candidature</a>
+																									<a class="navbar-brand" href="{{ path('answer_new') }}"> Nouvelle Réponse</a>
+																									<a class="navbar-brand" href="{{ path('job_interview_new') }}">Nouvelle Entretien</a>
+																									<a class="navbar-brand" href="{{ path('application_index') }}">Liste de vos Candidatures</a>
+																									<a class="navbar-brand" href="{{ path('job_interview_index') }}">Liste de vos entretiens</a>
+																									<a class="navbar-brand" href="{{ path('company_index') }}">Liste des entreprises</a>
+																									<a class="navbar-brand" href="{{ path('address_index') }}">Liste des adresses</a>
+																									<a class="navbar-brand" href="{{ path('contact_index') }}">Répertoire</a>
+																								</nav> #}
 
-		<div class="navbar dropdown navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand dropdown">Job Seekers</a>
-			<a class="navbar-brand dropdown" href="{{ path('home') }}">Accueil</a>
-			<div class="navbar-brand dropdown dropbtn">
-				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Candidature</div>
+		<div class="navbar-light bg-light navbar-brand">
+			<a class="navbar-brand">Job Seekers</a>
+			<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
+
+			<div class="dropdown">
+				<span class="dropbtn">Candidature  
+					<i class="fa fa-caret-down"></i>
+				</span>
 				<div class="dropdown-content">
-					<a href="{{ path('application_new') }}">Nouvelle</a>
-				</div>
-				<div class="dropdown-content">
-					<a href="{{ path('application_index') }}">Liste</a>
-				</div>
-			</div>
-			<div class="navbar-brand dropdown dropbtn">
-				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Réponse</div>
-				<div class="dropdown-content">
-					<a href="{{ path('answer_new') }}">Nouvelle</a>
-				</div>
-				<div class="dropdown-content">
-					<a href="{{ path('answer_index') }}">Liste</a>
+					<div><a href="{{ path('application_new') }}">Nouvelle
+					</a></div>
+					<div><a href="{{ path('application_index') }}">Liste
+					</a></div>
 				</div>
 			</div>
-			<div class="navbar-brand dropdown dropbtn">
-				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Entretiens</div>
+
+			<div class="dropdown">
+				<span class="dropbtn">Réponse  
+					<i class="fa fa-caret-down"></i>
+				</span>
 				<div class="dropdown-content">
-					<a href="{{ path('job_interview_new') }}">Nouveau</a>
-				</div>
-				<div class="dropdown-content">
-					<a href="{{ path('job_interview_index') }}">Liste</a>
+					<div><a href="{{ path('answer_new') }}">Nouvelle
+					</a></div>
+					<div><a href="{{ path('answer_index') }}">Liste
+					</a></div>
 				</div>
 			</div>
-			<div class="navbar-brand dropdown dropbtn">
-				<div onclick="myFunction()" id="myDropdown" class="navbar-brand dropdown-content dropbtn">Contact</div>
+
+			<div class="dropdown">
+				<span class="dropbtn">Entretiens 
+					<i class="fa fa-caret-down"></i>
+				</span>
 				<div class="dropdown-content">
-					<a href="{{ path('contact_new') }}">Nouveau Contact</a>
+					<div><a href="{{ path('job_interview_new') }}">Nouveau </a>
+					</div>
+					<div><a href="{{ path('job_interview_index') }}">Liste </a>
+					</div>
 				</div>
+			</div>
+
+			<div class="dropdown">
+				<span class="dropbtn">Contact   
+					<i class="fa fa-caret-down"></i>
+				</span>
 				<div class="dropdown-content">
-					<a href="{{ path('company_index') }}">Entreprises</a>
-				</div>
-				<div class="dropdown-content">
-					<a href="{{ path('contact_index') }}">Repertoir</a>
+					<div><a href="{{ path('contact_new') }}">Nouveau Contact
+					</a></div>
+					<div><a href="{{ path('company_index') }}">Entreprises
+					</a></div>
+					<div><a href="{{ path('contact_index') }}">Repertoir
+					</a></div>
 				</div>
 			</div>
 		</div>
+		{#<div class="dropdown">
+																							<span>Mouse over me</span>
+																							<div class="dropdown-content">
+																								<p>Hello World!</p>
+																							</div>
+																						</div>#}
 	{% endblock %}
 	<body>
 		{% block body %}{% endblock %}
