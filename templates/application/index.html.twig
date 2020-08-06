@@ -1,47 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Application index{% endblock %}
+{% block title %}Index des Candidatures
+{% endblock %}
 
 {% block body %}
-    <h1>Application index</h1>
+	<h1>Index des Candidatures</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Date</th>
-                <th>Date de suivi</th>
-                <th>Site WEB de l'Annonce</th>
-                <th>Annonce</th>
-                <th>Spontanée</th>
-                <th>Commentaires</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for application in applications %}
-            <tr>
-                <td>{{ application.id }}</td>
-                <td>{{ application.title }}</td>
-                <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
-                <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
-                <td>{{ application.addsWEBSite }}</td>
-                <td>{{ application.jobAdvertisement }}</td>
-                <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
-                <td>{{ application.comments }}</td>
-                <td>
-                    <a href="{{ path('application_show', {'id': application.id}) }}">Détail</a>
-                    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">Acune Candidature en Base de Donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table" data-toggle="table">
+		<thead>
+			<tr>
+				<th data-sortable="true">Titre de l'Annonce</th>
+				<th data-sortable="true">Entreprise</th>
+				<th data-sortable="true">Date</th>
+				<th data-sortable="true">Date de Suivi</th>
+				<th data-sortable="true">Date de Réponse</th>
+				<th data-sortable="true">Réponse</th>
+				<th >Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for application in applications %}
 
-    <a href="{{ path('application_new') }}">Create new</a>
+				<tr>
+					{#Titre de l'Annonce#}
+					<td>{{ application.title }}</td>
+					{#Entreprise#}
+					<td>
+						{% if company.application is defined and company.application is not null %}
+							{{ application.company.companyName}}
+						{% endif %}
+					</td>
+					{#Date#}
+					<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+					{#Date de Suivi#}
+					<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+					{#Date de Réponse#}
+					<td>
+						{% if answer.application is defined and answer.application is not null %}
+							{{ application.answer.date ? application.answer.date|date('Y-m-d') : '' }}}
+						{% endif %}
+					</td>
+					{#Réponse#}
+					<td>
+						{% if answer.application is defined and answer.application is not null %}
+							{{ application.answer.textOfAnswer }}}
+						{% endif %}
+					</td>
+					{#Actions#}
+					<td>
+						<a class="btn btn-light" href="{{ path('application_show', {'id': application.id}) }}">Détail</a><br><br>
+						<a class="btn btn-light" href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">Acune Candidature en Base de Donnée</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('application_new') }}">Create new</a>
 {% endblock %}

@@ -43,22 +43,9 @@ openDropdown.classList.remove('show');
 		{% endblock %}
 	</head>
 	{% block navbar %}
-		{#<nav class="navbar navbar-expand-lg navbar-light bg-light">
-																									pour les path il faut aller chercher l'info dans les contrôleurs
-																									<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
-																									<a class="navbar-brand" href="{{ path('application_new') }}">Nouvelle Candidature</a>
-																									<a class="navbar-brand" href="{{ path('answer_new') }}"> Nouvelle Réponse</a>
-																									<a class="navbar-brand" href="{{ path('job_interview_new') }}">Nouvelle Entretien</a>
-																									<a class="navbar-brand" href="{{ path('application_index') }}">Liste de vos Candidatures</a>
-																									<a class="navbar-brand" href="{{ path('job_interview_index') }}">Liste de vos entretiens</a>
-																									<a class="navbar-brand" href="{{ path('company_index') }}">Liste des entreprises</a>
-																									<a class="navbar-brand" href="{{ path('address_index') }}">Liste des adresses</a>
-																									<a class="navbar-brand" href="{{ path('contact_index') }}">Répertoire</a>
-																								</nav> #}
-
-		<div class="navbar-light bg-light navbar-brand">
-			<a class="navbar-brand">Job Seekers</a>
-			<a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
+		<div class="navbar-light bg-light">
+			<a class="navbar-light">Job Seekers</a>
+			<a class="navbar-light" href="{{ path('home') }}">Accueil</a>
 
 			<div class="dropdown">
 				<span class="dropbtn">Candidature  
