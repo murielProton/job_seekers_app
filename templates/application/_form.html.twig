@@ -1,7 +1,6 @@
 {{ form_start(form) }}
     <div class="contacts" data-prototype="{{ form_widget(form.company.contact.vars.prototype)|e('html_attr') }}">
     {{ form_widget(form) }}
-    
     <button class="btn btn-light" role="button">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
 
@@ -11,7 +10,7 @@
     
     jQuery(document).ready(function() {
         // setup an "add a tag" link
-        var $addTagButton = $('<button type="button" class="btn btn-light add_contact_link">Add a contact</button>');
+        var $addTagButton = $('<button type="button" class="btn btn-light add_contact_link">Ajouter un contact</button>');
         var $newLinkLi = $('#application_company_contact').append($addTagButton);
 
         // Get the ul that holds the collection of tags
@@ -49,7 +48,7 @@
             // Display the form in the page in an li, before the "Add a tag" link li
             var $newFormLi = $('#application_company_contact').append(newForm);
 
-            var $deleteTagButton = $('<button type="button" class="delete_contact_link">Delete a contact</button>');
+            var $deleteTagButton = $('<button type="button" class="btn delete_contact_link">Supprimer ce Contact</button>');
             console.log(newForm);
             $('#application_company_contact').children().last().append($deleteTagButton);
             $deleteTagButton.on('click', function(e) {

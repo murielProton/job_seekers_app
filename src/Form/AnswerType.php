@@ -25,8 +25,9 @@ class AnswerType extends AbstractType
             ])
             ->add('textOfAnswer',ChoiceType::class,[
                 'choices'  => [
+                    "Négative." => "Négative.",
                     "A recontacter." => "A recontacter.",
-                    "Me recontacte." => "Me recontacte.",
+                    "Me recontacte." => "Me recontactera.",
                     "Entretien téléphonique." => "Entretien téléphonique.",
                     "Entretien à distance." => "Entretien à distance.",
                     "Entretien." => "Entretien.",
@@ -40,11 +41,11 @@ class AnswerType extends AbstractType
                 'required'   => false,
                 'attr' => ['rows' => '4', 'cols' => '111']
             ])
-            ->add('application', ChoiceType::class, [
-                /*'class' => Application::class,
-                'choice_label' => "title",*/
-                'label'=> "Annonce*",
-                'required' => true, 
+            ->add('application', EntityType::class, [
+                'class' => Application::class,
+                'choice_label' => "title",
+                'label'=> "Titre de la Candidature Associé*",
+                'required' => true,
             ])
         ;
     }

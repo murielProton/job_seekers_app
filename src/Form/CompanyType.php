@@ -36,7 +36,7 @@ class CompanyType extends AbstractType
                 'label' => "Adresse de l'Entreprise",
                 'required'   => false
             ])
-            // Création d'un nouvelle entité 
+            // Création d'un nouvelle entité par un bouton
             ->add('contact', CollectionType::class, [
                 // each entry in the array will be an "contact" field
                 'entry_type' => ContactType::class,
@@ -45,21 +45,6 @@ class CompanyType extends AbstractType
                 'delete_empty' => true,
                 'prototype' => true
             ])
-            /*
-            ->add('contact', ContactType::class, [
-                'label' => "Contact",
-                'required'   => false,
-            ])
-            */
-            // Sélectione une entité déjà existante
-            /*
-            ->add('contact', EntityType::class,[ 
-                'class' => Contact::class, //
-                'label' => "Contact",
-                'required'   => false,
-                'choice_label' => 'Contact'
-            ])
-            */
         ;
     }
 

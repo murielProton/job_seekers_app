@@ -55,7 +55,7 @@ class Contact
     private $application;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contact")
+     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contact", cascade={"persist", "remove"})
      */
     private $companies;
 
