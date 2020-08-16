@@ -1,5 +1,5 @@
 {{ form_start(form) }}
-    <div class="contacts" data-prototype="{{ form_widget(form.company.contact.vars.prototype)|e('html_attr') }}">
+    <div class="contacts" data-prototype="{{ form_widget(form.company.contacts.vars.prototype)|e('html_attr') }}">
     {{ form_widget(form) }}
     <button class="btn btn-light" role="button">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
@@ -11,7 +11,7 @@
     jQuery(document).ready(function() {
         // setup an "add a tag" link
         var $addTagButton = $('<button type="button" class="btn btn-light add_contact_link">Ajouter un contact</button>');
-        var $newLinkLi = $('#application_company_contact').append($addTagButton);
+        var $newLinkLi = $('#application_company_contacts').append($addTagButton);
 
         // Get the ul that holds the collection of tags
         $collectionHolder = $('div.contacts');
@@ -46,11 +46,11 @@
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('#application_company_contact').append(newForm);
+            var $newFormLi = $('#application_company_contacts').append(newForm);
 
             var $deleteTagButton = $('<button type="button" class="btn delete_contact_link">Supprimer ce Contact</button>');
             console.log(newForm);
-            $('#application_company_contact').children().last().append($deleteTagButton);
+            $('#application_company_contacts').children().last().append($deleteTagButton);
             $deleteTagButton.on('click', function(e) {
                 $(e.target).parent().remove();
             });

@@ -45,7 +45,6 @@ th{
   }
 .dropbtn{
     min-width: 160px;
-    height: 100px;  
     padding: 12px 16px;
     display: block;
     text-align: center;
@@ -87,9 +86,9 @@ th{
     margin-right: 5rem;
     margin-left: 5rem;
     font-size: 1.25rem;
+    font-weight: 400;
+    text-align: center;
     line-height:inherit;
     white-space: nowrap;
     color: #212529;
-    font-weight: 400;
-    text-align: center;
 }

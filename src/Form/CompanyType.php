@@ -37,7 +37,7 @@ class CompanyType extends AbstractType
                 'required'   => false
             ])
             // Création d'un nouvelle entité par un bouton
-            ->add('contact', CollectionType::class, [
+            ->add('contacts', CollectionType::class, [
                 // each entry in the array will be an "contact" field
                 'entry_type' => ContactType::class,
                 'allow_add' => true,

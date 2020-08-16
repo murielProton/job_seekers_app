@@ -35,14 +35,9 @@ class Company
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity=Application::class, mappedBy="company")
+     * @ORM\OneToMany(targetEntity=Application::class, mappedBy="company", cascade={"persist", "remove"})
      */
     private $application;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="companies", cascade={"persist", "remove"})
-     */
-    private $contact;
 
     /**
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="company", cascade={"persist", "remove"})
@@ -55,10 +50,16 @@ class Company
      */
     private $jobInterview;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="company")
+     */
+    private $contacts;
+
     public function __construct()
     {
         $this->application = new ArrayCollection();
         $this->contact = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,32 +134,6 @@ class Company
         return $this;
     }
 
-    /**
-     * @return Collection|Contact[]
-     */
-    public function getContact(): Collection
-    {
-        return $this->contact;
-    }
-
-    public function addContact(Contact $contact): self
-    {
-        if (!$this->contact->contains($contact)) {
-            $this->contact[] = $contact;
-        }
-
-        return $this;
-    }
-
-    public function removeContact(Contact $contact): self
-    {
-        if ($this->contact->contains($contact)) {
-            $this->contact->removeElement($contact);
-        }
-
-        return $this;
-    }
-
     public function getAddress(): ?Address
     {
         return $this->address;
@@ -184,6 +159,34 @@ class Company
         $newCompany = null === $jobInterview ? null : $this;
         if ($jobInterview->getCompany() !== $newCompany) {
             $jobInterview->setCompany($newCompany);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contact[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+            $contact->addCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->contains($contact)) {
+            $this->contacts->removeElement($contact);
+            $contact->removeCompany($this);
         }
 
         return $this;

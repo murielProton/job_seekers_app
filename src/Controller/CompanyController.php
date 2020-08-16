@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\Contact;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class CompanyController extends AbstractController
     public function index(CompanyRepository $companyRepository): Response
     {
         return $this->render('company/index.html.twig', [
-            'companies' => $companyRepository->findAll(),
+            'company' => $companyRepository->findAll(),
         ]);
     }
 
@@ -62,6 +63,7 @@ class CompanyController extends AbstractController
             'company' => $company,
         ]);
     }
+
 
     /**
      * @Route("/{id}/edit", name="company_edit", methods={"GET","POST"})

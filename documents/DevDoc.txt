@@ -136,7 +136,7 @@ cd Epitech/Rendu/job_seekers_app
 composer require doctrine/doctrine-migrations-bundle
 php bin/console doctrine:migrations:generate
 php bin/console doctrine:migrations:migrate
-php bin/console doctrine:migrations:create
+php bin/console doctrine:database:create
 -------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------CASE----------------------------------------------------------
 variable || champ || field == Camel CASE
@@ -297,3 +297,66 @@ EmailType ---- string -------- e-mail --------------- 320
     });
     
 </script>
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------SQLSTATE[22004]: Null value not allowed: 1138 Invalid use of NULL value-------------------------
+//Erreur dans le terminal Terminal arrive apprès avoir executer la ligne de commande :
+php bin/console doctrine:migrations:migrate
+Elle est connecté à l'erreur dans le moteur de recherche :
+//[Creation Error] The annotation @ORM\ManyToOne declared on property App\Entity\Contact::$company does 
+//not have a property named "mappedBy". Available properties: targetEntity, cascade, fetch, inversedBy
+dans migration, supprimer les fichiers migrations puis faire executer la ligne de commande dans le terminal :
+php bin/console doctrine:migrations:generate
+php bin/console doctrine:migrations:migrate
+-------------------------------------------------------------------------------------------------------------------------
+---------------------------------------Erreur dans le moteur de recherche internet---------------------------------------
+Au niveau d'un src>Form>EntityNameType.php, vous vous essayer d'intégrer dans un formulaire un choix multiple d'une autre
+ entité par un de ses champs. Ce qui implique un ManyToMany au niveau de l'@ORM
+En gros c'est la merde au niveau du fichier src>Entity>EntityName.php
+sur le genre de lignes suivantes
+/**
+     * @ORM\ManyToMany(targetEntity=Address::class, inversedBy="company", cascade={"persist", "remove"})
+     */
+supprimer toute mentions de l'entité dans le src>Entity>EntityName.php de base et dans le fichier de l'autre entité. exemple
+ici supprimer toute mention de Company ou company dans src>Entity>Contact.php && toute mention de Contact ou Contact dans 
+src>Entity>Company.php. Puis aller dans le terminal et executer les lignes de commandes suivantes.
+php bin/console make:entity
+contact
+ManyToMany
+Contact
+yes
+php bin/console doctrine:migrations:generate
+php bin/console doctrine:migrations:migrate
+yes
+-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------@ORM mappedBy && inversedBy-----------------------------------------------
+Lorsque deux Entity sont liées, sql créer une table spécifique avec leur deux noms : EntityNameA_EntityNameB || 
+Application_Answer.
+/home/proton/Epitech/Rendu/job_seekers_app/src/Entity/EntityNameA.php ||
+/home/proton/Epitech/Rendu/job_seekers_app/src/Entity/Application.php
+    /**
+     * @ORM\OneToMany(targetEntity=EntityB::class, mappedBy="entityA")
+     */
+    private $entityB;
+
+||
+
+    /**
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="application")
+     */
+    private $answer;
+    
+/home/proton/Epitech/Rendu/job_seekers_app/src/Entity/EntityNameB.php ||
+/home/proton/Epitech/Rendu/job_seekers_app/src/Entity/Answer.php
+    /**
+     * @ORM\ManyToOne(targetEntity=EntityA::class, inversedBy="entityB")
+     */
+    private $entityA;
+
+||
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="answer")
+     */
+    private $application;
+
+mappedBy et inversedBy sont liés il doivent pointer la même chose.

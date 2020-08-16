@@ -54,19 +54,20 @@ class Contact
      */
     private $application;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contact", cascade={"persist", "remove"})
-     */
-    private $companies;
 
     /**
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="contact", cascade={"persist", "remove"})
      */
     private $address;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contacts")
+     */
+    private $company;
+
     public function __construct()
     {
-        $this->companies = new ArrayCollection();
+        $this->company = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,34 +159,6 @@ class Contact
         return $this;
     }
 
-    /**
-     * @return Collection|Company[]
-     */
-    public function getCompanies(): Collection
-    {
-        return $this->companies;
-    }
-
-    public function addCompany(Company $company): self
-    {
-        if (!$this->companies->contains($company)) {
-            $this->companies[] = $company;
-            $company->addContact($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompany(Company $company): self
-    {
-        if ($this->companies->contains($company)) {
-            $this->companies->removeElement($company);
-            $company->removeContact($this);
-        }
-
-        return $this;
-    }
-
     public function getAddress(): ?Address
     {
         return $this->address;
@@ -194,6 +167,32 @@ class Contact
     public function setAddress(?Address $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Company[]
+     */
+    public function getCompany(): Collection
+    {
+        return $this->company;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->company->contains($company)) {
+            $this->company[] = $company;
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->company->contains($company)) {
+            $this->company->removeElement($company);
+        }
 
         return $this;
     }

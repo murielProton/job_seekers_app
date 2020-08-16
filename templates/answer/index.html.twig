@@ -8,6 +8,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Candidature</th>
                 <th>Id</th>
                 <th>Date</th>
                 <th>Réponse</th>
@@ -18,6 +19,11 @@
         <tbody>
         {% for answer in answers %}
             <tr>
+                <td>
+                {% if answer.application is defined and answer.application is not null %}
+                    {{ answer.application.title }}
+                {% endif %}
+                </td>
                 <td>{{ answer.id }}</td>
                 <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
                 <td>{{ answer.textOfAnswer }}</td>

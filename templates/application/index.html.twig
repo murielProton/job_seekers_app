@@ -26,9 +26,9 @@
 					<td>{{ application.title }}</td>
 					{#Entreprise#}
 					<td>
-						{% if company.application is defined and company.application is not null %}
-							{{ application.company.companyName}}
-						{% endif %}
+						{% if application.company is defined and application.company is not null %}
+								{{ application.company.companyName}}
+						{% endif %}					
 					</td>
 					{#Date#}
 					<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
@@ -36,15 +36,15 @@
 					<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
 					{#Date de Réponse#}
 					<td>
-						{% if answer.application is defined and answer.application is not null %}
-							{{ application.answer.date ? application.answer.date|date('Y-m-d') : '' }}}
-						{% endif %}
+						{% for answer in application.answer %}
+							{{ answer.date ? application.folowUpDate|date('Y-m-d') : '' }}
+						{% endfor %}
 					</td>
 					{#Réponse#}
 					<td>
-						{% if answer.application is defined and answer.application is not null %}
-							{{ application.answer.textOfAnswer }}}
-						{% endif %}
+						{% for answer in application.answer %}
+							{{ answer.textOfAnswer}}
+						{% endfor %}
 					</td>
 					{#Actions#}
 					<td>

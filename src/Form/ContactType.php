@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\Company;
 use App\Entity\Contact;
+use App\Entity\Application;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,8 +43,10 @@ class ContactType extends AbstractType
                 'class' => Company::class,
                 'choice_label' => "companyName",
                 'label'=> "Nom de l'Entreprise",
-                'required' => false,
-            ])
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false
+            ]);
         ;
     }
 
