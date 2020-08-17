@@ -34,8 +34,8 @@
 					{#Nom de l'Entreprise#}
 					<td class="text-center-horizontal">
 
-						{% for company in contact.company %}
-							{{ company.companyName }}
+						{% for company in contact.companies %}
+							<div>{{ company.companyName }}</div>
 						{% endfor %}
 					</td>
 					{#Boutons#}

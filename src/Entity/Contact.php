@@ -61,13 +61,13 @@ class Contact
     private $address;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="contacts")
+     * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="contacts")
      */
-    private $company;
+    private $companies;
 
     public function __construct()
     {
-        $this->company = new ArrayCollection();
+        $this->companies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,15 +174,15 @@ class Contact
     /**
      * @return Collection|Company[]
      */
-    public function getCompany(): Collection
+    public function getCompanies(): Collection
     {
-        return $this->company;
+        return $this->companies;
     }
 
     public function addCompany(Company $company): self
     {
-        if (!$this->company->contains($company)) {
-            $this->company[] = $company;
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
         }
 
         return $this;
@@ -190,8 +190,8 @@ class Contact
 
     public function removeCompany(Company $company): self
     {
-        if ($this->company->contains($company)) {
-            $this->company->removeElement($company);
+        if ($this->companies->contains($company)) {
+            $this->companies->removeElement($company);
         }
 
         return $this;

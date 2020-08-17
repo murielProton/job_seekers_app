@@ -50,14 +50,13 @@ class Company
     private $jobInterview;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="company")
+     * @ORM\ManyToMany(targetEntity=Contact::class, mappedBy="companies")
      */
     private $contacts;
 
     public function __construct()
     {
         $this->application = new ArrayCollection();
-        $this->contact = new ArrayCollection();
         $this->contacts = new ArrayCollection();
     }
 
@@ -161,6 +160,11 @@ class Company
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->companyName;
     }
 
     /**

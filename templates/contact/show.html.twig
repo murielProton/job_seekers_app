@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{ contact.contactTitle }{ contact.forName }{ contact.sirName }{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-    <h1>{ contact.contactTitle }{ contact.forName }{ contact.sirName }</h1>
+    <h1>Contact</h1>
 
     <table class="table">
         <tbody>
@@ -12,31 +12,31 @@
                 <td>{{ contact.id }}</td>
             </tr>
             <tr>
-                <th>Titre</th>
+                <th>ContactTitle</th>
                 <td>{{ contact.contactTitle }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>ForName</th>
                 <td>{{ contact.forName }}</td>
             </tr>
             <tr>
-                <th>Prénom</th>
+                <th>SirName</th>
                 <td>{{ contact.sirName }}</td>
             </tr>
             <tr>
-                <th>Téléphone</th>
+                <th>Telephone</th>
                 <td>{{ contact.telephone }}</td>
             </tr>
             <tr>
-                <th>Courriel</th>
+                <th>EMail</th>
                 <td>{{ contact.eMail }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('contact_index') }}">Retour à la Liste</a>
+    <a href="{{ path('contact_index') }}">back to list</a>
 
-    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
+    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
 
     {{ include('contact/_delete_form.html.twig') }}
 {% endblock %}

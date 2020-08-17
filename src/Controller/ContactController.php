@@ -3,13 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use App\Entity\Company;
-use App\Form\ContactType;
+use App\Form\Contact1Type;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @Route("/contact")
@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/job_seekers_app/index/contact", name="contact_index", methods={"GET"})
+     * @Route("/", name="contact_index", methods={"GET"})
      */
     public function index(ContactRepository $contactRepository): Response
     {
@@ -27,12 +27,12 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/job_seekers_app/new/contact", name="contact_new", methods={"GET","POST"})
+     * @Route("/new", name="contact_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(Contact1Type::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,12 +64,11 @@ class ContactController extends AbstractController
      */
     public function edit(Request $request, Contact $contact): Response
     {
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(Contact1Type::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('contact_index');
         }
 

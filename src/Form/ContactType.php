@@ -39,7 +39,7 @@ class ContactType extends AbstractType
                 'label' => "Adresse courriel",
                 'required' => false
             ])
-            ->add('company', EntityType::class, [
+            ->add('companies', EntityType::class, [
                 'class' => Company::class,
                 'choice_label' => "companyName",
                 'label'=> "Nom de l'Entreprise",
