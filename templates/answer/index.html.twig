@@ -1,36 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index des Réponses{% endblock %}
+{% block title %}Index des Réponses
+{% endblock %}
 
 {% block body %}
     <h1>Index des Réponses</h1>
 
-    <table class="table">
+    <table class="table" data-toggle="table">
         <thead>
             <tr>
-                <th>Candidature</th>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Réponse</th>
-                <th>Commentaires</th>
-                <th>Actions</th>
+                <th data-sortable="true">Candidature</th>
+                <th data-sortable="true">Date</th>
+                <th data-sortable="true">Réponse</th>
+                <th>{#ne pas supprimer ce TH#}</th>
             </tr>
         </thead>
         <tbody>
         {% for answer in answers %}
             <tr>
+                {#titre de la candidature#}
                 <td>
                 {% if answer.application is defined and answer.application is not null %}
                     {{ answer.application.title }}
                 {% endif %}
-                </td>
-                <td>{{ answer.id }}</td>
-                <td>{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
-                <td>{{ answer.textOfAnswer }}</td>
-                <td>{{ answer.comments }}</td>
+                </td class="text-center-horizontal">
+                {#date de la réponse#}
+                <td class="text-center-horizontal">{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
+                {#text de la réponse#}
+                <td class="text-center-horizontal">{{ answer.textOfAnswer }}</td>
                 <td>
-                    <a href="{{ path('answer_show', {'id': answer.id}) }}">Détail</a>
-                    <a href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
+                {#boutons#}
+                    <a class="btn btn-light btn-center" href="{{ path('answer_show', {'id': answer.id}) }}">Détail</a><br><br>
+                    <a class="btn btn-light btn-center" href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +42,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('answer_new') }}">Create new</a>
 {% endblock %}

@@ -14,13 +14,15 @@ body{
     margin: auto;
 }
 
-.btn-light{
+.btn-right{
     float: right;
 }
 .btn-light-red{
     float: left !important;
 }
-
+.btn-center{
+    float: center !important;;
+}
 h1{
     text-align: center;
     margin-top: 50px;
@@ -39,6 +41,7 @@ label{
 th{
     text-align: center;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;

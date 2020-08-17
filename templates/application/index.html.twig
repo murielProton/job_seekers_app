@@ -15,7 +15,7 @@
 				<th data-sortable="true">Date de Suivi</th>
 				<th data-sortable="true">Date de Réponse</th>
 				<th data-sortable="true">Réponse</th>
-				<th >Actions</th>
+				<th >{#ne pas supprimer ce TH#}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,31 +25,31 @@
 					{#Titre de l'Annonce#}
 					<td>{{ application.title }}</td>
 					{#Entreprise#}
-					<td>
+					<td class = "text-center-horizontal">
 						{% if application.company is defined and application.company is not null %}
 								{{ application.company.companyName}}
 						{% endif %}					
 					</td>
 					{#Date#}
-					<td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+					<td class = "text-center-horizontal">{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
 					{#Date de Suivi#}
-					<td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+					<td class = "text-center-horizontal">{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
 					{#Date de Réponse#}
-					<td>
+					<td class = "text-center-horizontal">
 						{% for answer in application.answer %}
 							{{ answer.date ? application.folowUpDate|date('Y-m-d') : '' }}
 						{% endfor %}
 					</td>
 					{#Réponse#}
-					<td>
+					<td class = "text-center-horizontal">
 						{% for answer in application.answer %}
 							{{ answer.textOfAnswer}}
 						{% endfor %}
 					</td>
 					{#Actions#}
 					<td>
-						<a class="btn btn-light" href="{{ path('application_show', {'id': application.id}) }}">Détail</a><br><br>
-						<a class="btn btn-light" href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
+						<a class="btn btn-light btn-center" href="{{ path('application_show', {'id': application.id}) }}">Détail</a><br><br>
+						<a class="btn btn-light btn-center" href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
 					</td>
 				</tr>
 			{% else %}
@@ -60,5 +60,5 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('application_new') }}">Create new</a>
+	
 {% endblock %}

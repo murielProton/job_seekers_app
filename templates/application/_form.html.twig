@@ -1,7 +1,7 @@
 {{ form_start(form) }}
     <div class="contacts" data-prototype="{{ form_widget(form.company.contacts.vars.prototype)|e('html_attr') }}">
     {{ form_widget(form) }}
-    <button class="btn btn-light" role="button">{{ button_label|default('Enregistrer') }}</button>
+    <button class="btn btn-light btn-right" role="button">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
 
 <script>
@@ -10,7 +10,7 @@
     
     jQuery(document).ready(function() {
         // setup an "add a tag" link
-        var $addTagButton = $('<button type="button" class="btn btn-light add_contact_link">Ajouter un contact</button>');
+        var $addTagButton = $('<button type="button" class="btn btn-light btn-right add_contact_link">Ajouter un contact</button>');
         var $newLinkLi = $('#application_company_contacts').append($addTagButton);
 
         // Get the ul that holds the collection of tags

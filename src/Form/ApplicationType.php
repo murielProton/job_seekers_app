@@ -16,7 +16,6 @@ class ApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('company', CompanyType::class, [
                 'label' => "Entreprise",
                 'required'   => false
