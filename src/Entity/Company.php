@@ -44,7 +44,6 @@ class Company
      */
     private $address;
     
-
     /**
      * @ORM\OneToOne(targetEntity=JobInterview::class, mappedBy="company", cascade={"persist", "remove"})
      */

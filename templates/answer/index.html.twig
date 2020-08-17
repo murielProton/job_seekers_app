@@ -12,6 +12,7 @@
                 <th data-sortable="true">Candidature</th>
                 <th data-sortable="true">Date</th>
                 <th data-sortable="true">Réponse</th>
+                <th data-sortable="true">Date de l'Entretien</th>
                 <th>{#ne pas supprimer ce TH#}</th>
             </tr>
         </thead>
@@ -23,15 +24,18 @@
                 {% if answer.application is defined and answer.application is not null %}
                     {{ answer.application.title }}
                 {% endif %}
-                </td class="text-center-horizontal">
+                </td>
                 {#date de la réponse#}
                 <td class="text-center-horizontal">{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
                 {#text de la réponse#}
                 <td class="text-center-horizontal">{{ answer.textOfAnswer }}</td>
-                <td>
+                {#Date de l'Entretien#}
+                <td {#class="text-center-horizontal">{{ jobInterview.dateOfInterview ? answer.date|date('Y-m-d') : '' }}#}</td>
+                </td>
+                <td class="text-center-horizontal">
                 {#boutons#}
-                    <a class="btn btn-light btn-center" href="{{ path('answer_show', {'id': answer.id}) }}">Détail</a><br><br>
-                    <a class="btn btn-light btn-center" href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
+                    <a class="btn btn-light" href="{{ path('answer_show', {'id': answer.id}) }}">Détail</a><br><br>
+                    <a class="btn btn-light" href="{{ path('answer_edit', {'id': answer.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

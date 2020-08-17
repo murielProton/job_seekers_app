@@ -1,43 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Repertoir{% endblock %}
+{% block title %}Repertoir
+{% endblock %}
 
 {% block body %}
-    <h1>Repertoir</h1>
+	<h1>Repertoir</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Téléphone</th>
-                <th>courriel</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.id }}</td>
-                <td>{{ contact.contactTitle }}</td>
-                <td>{{ contact.forName }}</td>
-                <td>{{ contact.sirName }}</td>
-                <td>{{ contact.telephone }}</td>
-                <td>{{ contact.eMail }}</td>
-                <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Détail</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">Aucun Contacts en Base de Donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table" data-toggle="table">
+		<thead>
+			<tr>
+				<th data-sortable="true">Titre</th>
+				<th data-sortable="true">Prénom</th>
+				<th data-sortable="true">Nom</th>
+				<th data-sortable="true">Téléphone</th>
+				<th data-sortable="true">Courriel</th>
+				<th data-sortable="true">Entreprise</th>
+				<th>{#ne pas supprimer ce TH#}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for contact in contacts %}
+				<tr>
+					{#Titre#}
+					<td class="text-center-horizontal">{{ contact.contactTitle }}</td>
+					{#Prénom#}
+					<td class="text-center-horizontal">{{ contact.forName }}</td>
+					{#Nom#}
+					<td class="text-center-horizontal">{{ contact.sirName }}</td>
+					{#Téléphone#}
+					<td class="text-center-horizontal">{{ contact.telephone }}</td>
+					{#Courriel#}
+					<td class="text-center-horizontal">{{ contact.eMail }}</td>
+					{#Nom de l'Entreprise#}
+					<td class="text-center-horizontal">
 
-    <a href="{{ path('contact_new') }}">Create new</a>
+						{% for company in contact.company %}
+							{{ company.companyName }}
+						{% endfor %}
+					</td>
+					{#Boutons#}
+					<td class="text-center-horizontal">
+						<a class="btn btn-light btn-center" href="{{ path('contact_show', {'id': contact.id}) }}">Détail</a><br><br>
+						<a class="btn btn-light btn-center" href="{{ path('contact_edit', {'id': contact.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">Aucun Contacts en Base de Donnée</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock %}

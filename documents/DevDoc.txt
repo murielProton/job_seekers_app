@@ -10,7 +10,7 @@ https://127.0.0.1:8000/job_seekers_app
 //Aller dans le terminaln, taper la commande :
 mysql -u root -p
 //Utiliser la bonne base de donnée
-USE symfony
+USE job_seekers_app
 //voir toutes les tables de cette base de donnée
 show tables;
 //voir les champs de la table application

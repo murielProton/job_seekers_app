@@ -1,39 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index des Entretiens{% endblock %}
+{% block title %}Index des Entretiens
+{% endblock %}
 
 {% block body %}
-    <h1>Index des Entretiens</h1>
+	<h1>Index des Entretiens</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Horaire</th>
-                <th>Commentaires</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for job_interview in job_interviews %}
-            <tr>
-                <td>{{ job_interview.id }}</td>
-                <td>{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</td>
-                <td>{{ job_interview.schedule ? job_interview.schedule|date('H:i:s') : '' }}</td>
-                <td>{{ job_interview.comments }}</td>
-                <td>
-                    <a href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détail</a>
-                    <a href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">Modifier</a>
+	<table class="table" data-toggle="table">
+		<thead>
+			<tr>
+				<th data-sortable="true">Titre de l'Annonce</th>
+				<th data-sortable="true">Date</th>
+				<th data-sortable="true">Horaire</th>
+				<th>{#ne pas supprimer ce TH#}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for job_interview in job_interviews %}
+				<tr>
+					{#Titre de l'Annonce#}
+					<td>
+                {% if job_interview.application is defined and job_interview.application is not null %}
+                    {{ job_interview.application.title }}
+                {% endif %}
                 </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun Entretien En Base de Donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+					<td class="text-center-horizontal">{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</td>
+					<td class="text-center-horizontal">{{ job_interview.schedule ? job_interview.schedule|date('H:i:s') : '' }}</td>
+					<td class="text-center-horizontal">
+						<a class="btn btn-light" href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détail</a><br><br>
+						<a class="btn btn-light" href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucun Entretien En Base de Donnée</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('job_interview_new') }}">Nouvel Entretien</a>
+	<a href="{{ path('job_interview_new') }}">Nouvel Entretien</a>
 {% endblock %}

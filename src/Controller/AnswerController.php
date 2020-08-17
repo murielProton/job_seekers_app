@@ -38,7 +38,9 @@ class AnswerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($answer);
             $entityManager->flush();
-
+/*if($this->textOfAnwer == "Entretien."){
+    return $this->redirectToRoute('job_interview_new');
+}else{return $this->redirectToRoute('answer_index');}*/
             return $this->redirectToRoute('answer_index');
         }
 

@@ -1,39 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Repertoire des Entreprises{% endblock %}
+{% block title %}Repertoire des Entreprises
+{% endblock %}
 
 {% block body %}
-    <h1>Repertoire des Entreprises</h1>
+	<h1>Repertoire des Entreprises</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Site WEB</th>
-                <th>Commentaires</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for company in company %}
-            <tr>
-                <td>{{ company.id }}</td>
-                <td>{{ company.companyName }}</td>
-                <td>{{ company.companyWEBSite }}</td>
-                <td>{{ company.comments }}</td>
-                <td>
-                    <a href="{{ path('company_show', {'id': company.id}) }}">Détail</a>
-                    <a href="{{ path('company_edit', {'id': company.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Acune Entreprises/Association enregistrer en Base de Donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table" data-toggle="table">
+		<thead>
+			<tr>
+				<th data-sortable="true">Nom</th>
+				<th data-sortable="true">Site WEB</th>
+				<th data-sortable="true">Contact</th>
+				<th>{#ne pas supprimer ce TH#}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for company in company %}
+				<tr>
+					{#Nom de l'Entreprise#}
+					<td class="text-center-horizontal">{{ company.companyName }}</td>
+					{#Site WEB#}
+					<td class="text-center-horizontal">{{ company.companyWEBSite }}</td>
+					{#Contact#}
+					<td class="text-center-horizontal">
+						{% for contact in company.contacts %}
+							{{ contact.contactTitle ~" "~ contact.forName ~" "~ contact.sirName }}
+						{% endfor %}
+					</td>
+					{#Boutons#}
+					<td class="text-center-horizontal">
+						<a class="btn btn-light" href="{{ path('company_show', {'id': company.id}) }}">Détail</a><br><br>
+						<a class="btn btn-light" href="{{ path('company_edit', {'id': company.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr class="text-center-horizontal">
+					<td colspan="5">Acune Entreprises/Association enregistrer en Base de Donnée</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('company_new') }}">Nouvelle Entreprise</a>
+	<a href="{{ path('company_new') }}">Nouvelle Entreprise</a>
 {% endblock %}
