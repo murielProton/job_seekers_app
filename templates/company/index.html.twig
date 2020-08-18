@@ -11,6 +11,8 @@
 			<tr>
 				<th data-sortable="true">Nom</th>
 				<th data-sortable="true">Site WEB</th>
+				<th data-sortable="true">Adresse Couriel</th>
+				<th data-sortable="true">Téléphone</th>
 				<th data-sortable="true">Contact</th>
 				<th>{#ne pas supprimer ce TH#}</th>
 			</tr>
@@ -22,10 +24,22 @@
 					<td class="text-center-horizontal">{{ company.companyName }}</td>
 					{#Site WEB#}
 					<td class="text-center-horizontal">{{ company.companyWEBSite }}</td>
+					{#Adresse Mail#}
+					<td class="text-center-horizontal">
+					{% for contact in company.contacts %}
+							<div>{{ contact.eMail }}</div>
+						{% endfor %}
+					</td>
+					{#Téléphone#}
+					<td class="text-center-horizontal">
+						{% for contact in company.contacts %}
+							<div>{{ contact.telephone }}</div>
+						{% endfor %}
+					</td>
 					{#Contact#}
 					<td class="text-center-horizontal">
 						{% for contact in company.contacts %}
-							{{ contact.contactTitle ~" "~ contact.forName ~" "~ contact.sirName }}
+							<div>{{ contact.contactTitle ~" "~ contact.forName ~" "~ contact.sirName }}</div>
 						{% endfor %}
 					</td>
 					{#Boutons#}
@@ -42,5 +56,4 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('company_new') }}">Nouvelle Entreprise</a>
 {% endblock %}

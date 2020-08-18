@@ -30,6 +30,10 @@ company_index:
     path: /job_seekers_app/index/company
     controller: App\Controller\CompanyController::index
 
+company_new:
+    path: /job_seekers_app/new/company
+    controller: App\Controller\CompanyController::new
+
 contact_index:
     path: /job_seekers_app/index/contact
     controller: App\Controller\ContactController::index

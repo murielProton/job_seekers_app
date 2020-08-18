@@ -48,61 +48,83 @@ openDropdown.classList.remove('show');
 			<a class="navbar-light" href="{{ path('home') }}">Accueil</a>
 
 			<div class="dropdown">
-				<span class="dropbtn">Candidature  
+				<span class="dropbtn">Candidature
 					<i class="fa fa-caret-down"></i>
 				</span>
 				<div class="dropdown-content">
-					<div><a href="{{ path('application_new') }}">Nouvelle
-					</a></div>
-					<div><a href="{{ path('application_index') }}">Liste
-					</a></div>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<span class="dropbtn">Réponse  
-					<i class="fa fa-caret-down"></i>
-				</span>
-				<div class="dropdown-content">
-					<div><a href="{{ path('answer_new') }}">Nouvelle
-					</a></div>
-					<div><a href="{{ path('answer_index') }}">Liste
-					</a></div>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<span class="dropbtn">Entretiens 
-					<i class="fa fa-caret-down"></i>
-				</span>
-				<div class="dropdown-content">
-					<div><a href="{{ path('job_interview_new') }}">Nouveau </a>
+					<div>
+						<a href="{{ path('application_new') }}">Nouvelle
+						</a>
 					</div>
-					<div><a href="{{ path('job_interview_index') }}">Liste </a>
+					<div>
+						<a href="{{ path('application_index') }}">Liste
+						</a>
 					</div>
 				</div>
 			</div>
 
 			<div class="dropdown">
-				<span class="dropbtn">Contact   
+				<span class="dropbtn">Réponse
 					<i class="fa fa-caret-down"></i>
 				</span>
 				<div class="dropdown-content">
-					<div><a href="{{ path('contact_new') }}">Nouveau Contact
-					</a></div>
-					<div><a href="{{ path('company_index') }}">Entreprises
-					</a></div>
-					<div><a href="{{ path('contact_index') }}">Repertoire
-					</a></div>
+					<div>
+						<a href="{{ path('answer_new') }}">Nouvelle
+						</a>
+					</div>
+					<div>
+						<a href="{{ path('answer_index') }}">Liste
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<span class="dropbtn">Entretiens
+					<i class="fa fa-caret-down"></i>
+				</span>
+				<div class="dropdown-content">
+					<div>
+						<a href="{{ path('job_interview_new') }}">Nouveau
+						</a>
+					</div>
+					<div>
+						<a href="{{ path('job_interview_index') }}">Liste
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<span class="dropbtn">Contact
+					<i class="fa fa-caret-down"></i>
+				</span>
+				<div class="dropdown-content">
+					<div>
+						<a href="{{ path('company_new') }}">Nouvelle Entreprise
+						</a>
+					</div>
+					<div>
+						<a href="{{ path('contact_new') }}">Nouveau Contact
+						</a>
+					</div>
+					<div>
+						<a href="{{ path('company_index') }}">Entreprises
+						</a>
+					</div>
+					<div>
+						<a href="{{ path('contact_index') }}">Repertoire
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 		{#<div class="dropdown">
-																							<span>Mouse over me</span>
-																							<div class="dropdown-content">
-																								<p>Hello World!</p>
-																							</div>
-																						</div>#}
+																									<span>Mouse over me</span>
+																									<div class="dropdown-content">
+																										<p>Hello World!</p>
+																									</div>
+																								</div>#}
 	{% endblock %}
 	<body>
 		{% block body %}{% endblock %}
