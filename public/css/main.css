@@ -12,6 +12,8 @@
 body{
     width: 1400px;
     margin: auto;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .btn-right{
@@ -21,7 +23,7 @@ body{
     float: left !important;
 }
 .btn-center{
-    float: center !important;;
+    float: center !important;
 }
 h1{
     text-align: center;
@@ -31,6 +33,10 @@ h1{
 .text-center-horizontal{
     text-align: center;
 }
+.text-right-horizontal{
+    text-align: right !important;
+}
+
 table {
     margin-bottom: 15px;
 }

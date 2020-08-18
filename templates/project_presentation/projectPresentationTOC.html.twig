@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sommaire
+{% endblock %}
+
+{% block body %}
+	<h1>Sommaire</h1>
+
+	<ul>
+		<li>Introduction</li>
+		<li>Lexique</li>
+		<li><a href="{{ path('project_presentation_objectifs') }}">Objectif du Projet</a></li>
+        <li><a href="{{ path('project_presentation_needs') }}">Besoin du Publique : règles métiers</a></li>
+		<li>Mise en Oeuvre</li>
+		<ul><li><a href="{{ path('project_presentation_questionnaire') }}">Questionnaire Déstiné aux Utilisateurs</a></li></ul>
+		<li><a href="{{ path('project_presentation_features') }}">Liste des Fonctionalités</a></li>
+        <li>Backlog</li>
+		<li>Difficultés Attendues</li>
+		<li>Processus : liens entre les pages Répertoir>Détail d'un Contact</li>
+        <li>Architecture : shéma UML</li>
+		<li>Description des écrans : court paragrphe décrivant toutes les fonctions de chaque écrans</li>
+		<li>Wireframe</li>
+        <li>Maquette</li>
+        <li>Les des champs : boutons, menue, liens zonde texte, titres</li>
+        <li>Règles de Validation d'Affichages</li>
+        <li>Tableau des Messages d'Erreurs</li>
+	</ul>
+
+{% endblock %}

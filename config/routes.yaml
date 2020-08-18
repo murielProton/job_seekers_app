@@ -46,3 +46,18 @@ job_interview_new:
     path: /job_seekers_app/new/job_interview
     controller: App\Controller\JobInterviewController::new   
 
+project_presentation_index:
+    path: /job_seekers_app/project/presentation
+    controller: App\Controller\ProjectPresentationController::index
+
+project_presentation_TOC:
+    path: /job_seekers_app/project/presentation/toc
+    controller: App\Controller\ProjectPresentationController::tableOfContent
+
+project_presentation_Objectifs:
+    path: /job_seekers_app/project/presentation/objectifs
+    controller: App\Controller\ProjectPresentationController::objectifsOfTheProject
+
+project_presentation_needs:
+    path: /job_seekers_app/project/presentation/needs
+    controller: App\Controller\ProjectPresentationController::needs
