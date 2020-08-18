@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use App\Form\Contact1Type;
+use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +32,7 @@ class ContactController extends AbstractController
     public function new(Request $request): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(Contact1Type::class, $contact);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,7 +64,7 @@ class ContactController extends AbstractController
      */
     public function edit(Request $request, Contact $contact): Response
     {
-        $form = $this->createForm(Contact1Type::class, $contact);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -9,7 +9,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,6 +37,10 @@ class ContactType extends AbstractType
             ->add('eMail', EmailType::class, [
                 'label' => "Adresse courriel",
                 'required' => false
+            ])    
+            ->add('address', AddressType::class, [
+                'label' => "Adresse du Contact",
+                'required'   => false
             ])
             ->add('companies', EntityType::class, [
                 'class' => Company::class,
@@ -46,7 +49,15 @@ class ContactType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'required' => false
-            ]);
+            ])
+            ->add('application', EntityType::class, [
+                'class' => Application::class,
+                'choice_label' => "title",
+                'label'=> "Titre de la Candidature Associé",
+                'required' => false,
+            ])
+            /*->add('answer')*/
+
         ;
     }
 
