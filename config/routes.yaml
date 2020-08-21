@@ -44,7 +44,7 @@ contact_new:
 
 job_interview_new:
     path: /job_seekers_app/new/job_interview
-    controller: App\Controller\JobInterviewController::new   
+    controller: App\Controller\JobInterviewController::new
 
 project_presentation_index:
     path: /job_seekers_app/project/presentation
@@ -61,3 +61,13 @@ project_presentation_Objectifs:
 project_presentation_needs:
     path: /job_seekers_app/project/presentation/needs
     controller: App\Controller\ProjectPresentationController::needs
+
+project_presentation_answerTQ001:
+    path: /job_seekers_app/project/presentation/answerTQ001
+    controller: App\Controller\ProjectPresentationController::answerTQ001
+project_presentation_answerTQ002:
+    path: /job_seekers_app/project/presentation/answerTQ002
+    controller: App\Controller\ProjectPresentationController::answerTQ002
+project_presentation_answerTQ003:
+    path: /job_seekers_app/project/presentation/answerTQ003
+    controller: App\Controller\ProjectPresentationController::answerTQ003

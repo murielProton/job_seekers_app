@@ -1,0 +1,40 @@
+pour le contact on a besoin que de son titre son nom son prénom et son numero et email.
+au lieu de l'appeler contact dans l'onglet de navigation l'appler réseau.
+
+Comme il s'agit de travailler son réseau, ajouter une entreprise ou un contact n'est pas en relation directe avec une annonce. C'est des personnes ou des entreprises qui nous intéressent. Nous devons pouvroi ajouter en commentaire, je l'ai rencontré à telle date, nous avons parler de, ... Que ce soit pour entreprise ou contact je mettrai la possibilité d'ajouter à commentaire.
+
+preciser les sites web de recrutements dans la liste des fonctionnalités
+
+Lettre de motivation est- ce que c'est pas plus simple de faire une texte area pour la construire ?
+
+faire un menu profil avec un menu déroulé avec cv et lm. ces boutons ouvrent une fenêtre avec la liste des fichiers enregistrer. Lors de l'enregistrement des fichiers possibilité d'en changer le titre.
+
+Règles métier : quand je fais mon cv je colle à l'annonce chaque mot clef de l'annonce est repris dans mon cv et ma lettre de motivation. La lettre de motivation est ainsi personnalisé.
+
+suivi des quandidatures
+j'entends date du premier contact date de relance et date d'entretien
+acces à mon cv et mon cv, pouvoir modifier le cv et la lettre de motivation depuis ce logiciel
+pouvoir accéder à ce logiciel depuis n'importe quelle machine avec internet.
+
+quand on postule pour un minale job comme caissière ou serveuse comme il y a beaucoup de candidat il faut rappeler très vite. Pour des métiers de cadre il faut laisser passer une semaine car beaucoup de personne sont impliqués dans le recrutement pour ce poste.
+
+se bloquer des moments où on recherche un emploi, et ne pas oublier de se créer des sasse de décompression. il faut de l'auto dissipline et c'est la partie la plus difficile.
+
+Bien préparer son discours avant de relancer.
+
+analyse
+noter les mots clefs
+mettre les mots clefs dans le cv
+faire la lm
+une fois que c'est fait envoyer la candidature
+xxxx---------------------------------------------------------
+Si tu fais un calendrier n'oublie pas de faire un code couleur selon si c'est un entretien une candidature à faire ou un suivi, ce sont des tâches qui se traitent différemment.
+ 
+
+si il y a un endroit ou mettre le calendrier c'est sur la page d'accueil. Quite à ce que ce soit que le calendrier du jour. par exemple un rappel automatique des tâche à faire en fonction de la date.
+
+comment implémenter cette todo liste du jour ? Pour éviter le stresse de l'utilisateur il faut qu'il puisse la décidé lui même.
+
+contact nom de famille
+
+vérifier que les champs obligatoires soient unique en bdd!!

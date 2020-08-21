@@ -44,89 +44,97 @@ openDropdown.classList.remove('show');
 	</head>
 	{% block navbar %}
 		<div class="navbar-light bg-light">
-			<a class="navbar-light" href="{{ path('project_presentation_table_of_content')}}">Job Seekers</a>
-			<a class="navbar-light" href="{{ path('home') }}">Accueil</a>
-
 			<div class="dropdown">
-				<span class="dropbtn">Candidature
+				<span class="dropbtn">Job Seekers
 					<i class="fa fa-caret-down"></i>
 				</span>
 				<div class="dropdown-content">
 					<div>
-						<a href="{{ path('application_new') }}">Nouvelle
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('application_index') }}">Liste
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<span class="dropbtn">Réponse
-					<i class="fa fa-caret-down"></i>
-				</span>
-				<div class="dropdown-content">
-					<div>
-						<a href="{{ path('answer_new') }}">Nouvelle
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('answer_index') }}">Liste
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<span class="dropbtn">Entretiens
-					<i class="fa fa-caret-down"></i>
-				</span>
-				<div class="dropdown-content">
-					<div>
-						<a href="{{ path('job_interview_new') }}">Nouveau
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('job_interview_index') }}">Liste
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<span class="dropbtn">Contact
-					<i class="fa fa-caret-down"></i>
-				</span>
-				<div class="dropdown-content">
-					<div>
-						<a href="{{ path('company_new') }}">Nouvelle Entreprise
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('contact_new') }}">Nouveau Contact
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('company_index') }}">Entreprises
-						</a>
-					</div>
-					<div>
-						<a href="{{ path('contact_index') }}">Repertoire
-						</a>
-					</div>
+						<a href="{{ path('project_presentation_table_of_content')}}">Présentation</a>
+					</a>
 				</div>
 			</div>
 		</div>
-		{#<div class="dropdown">
+
+		<a class="navbar-light" href="{{ path('home') }}">Accueil</a>
+
+		<div class="dropdown">
+			<span class="dropbtn">Candidature
+				<i class="fa fa-caret-down"></i>
+			</span>
+			<div class="dropdown-content">
+				<div>
+					<a href="{{ path('application_new') }}">Nouvelle
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('application_index') }}">Liste
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<span class="dropbtn">Réponse
+				<i class="fa fa-caret-down"></i>
+			</span>
+			<div class="dropdown-content">
+				<div>
+					<a href="{{ path('answer_new') }}">Nouvelle
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('answer_index') }}">Liste
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<span class="dropbtn">Entretiens
+				<i class="fa fa-caret-down"></i>
+			</span>
+			<div class="dropdown-content">
+				<div>
+					<a href="{{ path('job_interview_new') }}">Nouveau
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('job_interview_index') }}">Liste
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<span class="dropbtn">Contact
+				<i class="fa fa-caret-down"></i>
+			</span>
+			<div class="dropdown-content">
+				<div>
+					<a href="{{ path('company_new') }}">Nouvelle Entreprise
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('contact_new') }}">Nouveau Contact
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('company_index') }}">Entreprises
+					</a>
+				</div>
+				<div>
+					<a href="{{ path('contact_index') }}">Répertoire
+					</a>
+				</div>
+			</div>
+		</div>
+	</html>
+</div>
+{#<div class="dropdown">
 																									<span>Mouse over me</span>
 																									<div class="dropdown-content">
 																										<p>Hello World!</p>
 																									</div>
-																								</div>#}
-	{% endblock %}
-	<body>
-		{% block body %}{% endblock %}
-	</body>
-</html></html>
+																								</div>#}{% endblock %}<body>
+{% block body %}{% endblock %}</body></html></html>

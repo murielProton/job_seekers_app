@@ -71,7 +71,7 @@ th{
 
 .dropdown-content a {
     float: none;
-    color: black;
+    color: 212529;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -79,7 +79,7 @@ th{
   }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #f9f9f9;
   }
 
 .dropdown:hover .dropdown-content {
@@ -88,7 +88,7 @@ th{
   
 .navbar-light{
     margin: auto;
-    background-color:#f9f9f9;
+    background-color: #f9f9f9;
     display : inline-block;
     padding-top: .3200rem;
     padding-bottom: .3200rem;
@@ -100,4 +100,9 @@ th{
     line-height:inherit;
     white-space: nowrap;
     color: #212529;
+}
+.couleurHP{
+background-color:#f9f9f9;
+color: #212529;
+navbar:#82e4a3;
 }
