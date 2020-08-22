@@ -364,3 +364,12 @@ Application_Answer.
     private $application;
 
 mappedBy et inversedBy sont liés il doivent pointer la même chose.
+----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------twig.html-------------------------------------------------------
+// attention en twig.html il n'est pas possible d'avoir deux modèles pour un seul document. Placez ce qui suit en haut
+//de votre fichier et vous aurez une erreur.
+{% extends 'base.html.twig' %}
+{% extends 'other.html.twig' %}
+// You can also provide a list of templates that are checked for existence. The first template that exists will be
+// used as a parent:
+{% extends ['base.html.twig', 'checklist.html.twig'] %}
