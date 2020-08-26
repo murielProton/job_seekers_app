@@ -26,11 +26,11 @@
                 {% endif %}
                 </td>
                 {#date de la réponse#}
-                <td class="text-center-horizontal">{{ answer.date ? answer.date|date('Y-m-d') : '' }}</td>
+                <td class="text-center-horizontal">{{ answer.date ? answer.date|date('d-m-Y') : '' }}</td>
                 {#text de la réponse#}
                 <td class="text-center-horizontal">{{ answer.textOfAnswer }}</td>
                 {#Date de l'Entretien#}
-                <td {#class="text-center-horizontal">{{ jobInterview.dateOfInterview ? answer.date|date('Y-m-d') : '' }}#}</td>
+                <td {#class="text-center-horizontal">{{ jobInterview.dateOfInterview ? answer.date|date('d-m-Y') : '' }}#}</td>
                 </td>
                 <td class="text-center-horizontal">
                 {#boutons#}

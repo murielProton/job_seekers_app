@@ -24,7 +24,7 @@
                     {{ job_interview.application.title }}
                 {% endif %}
                 </td>
-					<td class="text-center-horizontal">{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('Y-m-d') : '' }}</td>
+					<td class="text-center-horizontal">{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('d-m-Y') : '' }}</td>
 					<td class="text-center-horizontal">{{ job_interview.schedule ? job_interview.schedule|date('H:i:s') : '' }}</td>
 					<td class="text-center-horizontal">
 						<a class="btn btn-light" href="{{ path('job_interview_show', {'id': job_interview.id}) }}">Détail</a><br><br>

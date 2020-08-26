@@ -31,13 +31,13 @@
 						{% endif %}					
 					</td>
 					{#Date#}
-					<td class = "text-center-horizontal">{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
+					<td class = "text-center-horizontal">{{ application.postingDate ? application.postingDate|date('d-m-Y') : '' }}</td>
 					{#Date de Suivi#}
-					<td class = "text-center-horizontal">{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
+					<td class = "text-center-horizontal">{{ application.folowUpDate ? application.folowUpDate|date('d-m-Y') : '' }}</td>
 					{#Date de Réponse#}
 					<td class = "text-center-horizontal">
 						{% for answer in application.answer %}
-							{{ answer.date ? application.folowUpDate|date('Y-m-d') : '' }}
+							{{ answer.date ? application.folowUpDate|date('d-m-Y') : '' }}
 						{% endfor %}
 					</td>
 					{#Réponse#}

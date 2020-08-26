@@ -1,46 +1,120 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de l'Annonce{% endblock %}
+{% block title %}Détails de la Candidature
+{% endblock %}
 
 {% block body %}
-    <h1>Détails de l'Annonce</h1>
+	<h1>Détails sur la Candidature</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ application.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ application.postingDate ? application.postingDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date de suivi</th>
-                <td>{{ application.folowUpDate ? application.folowUpDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Site WEB de l'Annonce</th>
-                <td>{{ application.addsWEBSite }}</td>
-            </tr>
-            <tr>
-                <th>Annonce</th>
-                <td>{{ application.jobAdvertisement }}</td>
-            </tr>
-            <tr>
-                <th>Unsolicited</th>
-                <td>{{ application.unsolicited ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Commentaires</th>
-                <td>{{ application.comments }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Nom de l'entreprise</th>
+				<td>
+					{% if application.company is defined and application.company is not null %}
+						{{ application.company.companyName }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th>Site WEB de l'entreprise</th>
+				<td>
+					{% if application.company is defined and application.company is not null %}
+						{{ application.company.companyWEBSite }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th>Commentaires sur l'entreprise</th>
+				<td>
+					{% if application.company is defined and application.company is not null %}
+						{{ application.company.comments }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th>Détails sur l'entreprise</th>
+				<td>
+					<a class="btn btn-light" href="{{ path('company_show', {'id': application.company.id}) }}">Détail</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Modifier l'entreprise</th>
+				<td>
+					<a class="btn btn-light" href="{{ path('company_edit', {'id': application.company.id}) }}">Modifier</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Titre de l'Annonce</th>
+				<td>{{ application.title }}</td>
+			</tr>
+			<tr>
+				<th>Date de la candidature</th>
+				<td>{{ application.postingDate ? application.postingDate|date('d-m-Y') : '' }}</td>
+			</tr>
 
-    <a href="{{ path('application_index') }}">Retour à la Liste</a>
+			<tr>
+				<th>Candidature Spontanée</th>
+				<td>{{ application.unsolicited ? 'Oui' : 'Non' }}</td>
+			</tr>
 
-    <a href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
-
-    {{ include('application/_delete_form.html.twig') }}
+			<tr>
+				<th>Annonce</th>
+				<td>{{ application.jobAdvertisement }}</td>
+			</tr>
+			<tr>
+				<th>Commentaires</th>
+				<td>{{ application.comments }}</td>
+			</tr>
+			<tr>
+				<th>Site WEB de l'Annonce</th>
+				<td>{{ application.addsWEBSite }}</td>
+			</tr>
+			<tr>
+				<th>Date de suivi</th>
+				<td>{{ application.folowUpDate ? application.folowUpDate|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Réponse</th>
+				<td>
+					{% for answer in application.answer %}
+						{{ answer.textOfAnswer}}
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Date de l'entretien</th>
+				<td>
+					{% for jobInterviews in application.jobInterviews %}
+						{#	{{ jobInterviews.dateOfInterview ? jobInterviews.dateOfInterview|date('d-m-Y') : ''}}#}
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Heure de l'entretien</th>
+				<td>
+					{% for jobInterviews in application.jobInterviews %}
+						{#{{ jobInterviews.schedule ? application.jobInterviews.schedule|date('H:i:s') : '' }}#}
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Détails de l'entretien</th>
+				<td>
+					{% for jobInterviews in application.jobInterviews %}
+						<a class="btn btn-light" {#href="{{ path('job_interview_show', {'id': job_interviews.id}) }}"#}>Détails</td>
+					{% endfor %}
+				</td>
+			</tr>
+			<th>Modifier l'entretien</th>
+			<td>
+				{% for jobInterviews in application.jobInterviews %}
+					<a class="btn btn-light" {#href="{{ path('job_interview_edit', {'id': job_interviews.id}) }}"#}>Modifier</td>
+				{% endfor %}
+			</td>
+		</tbody>
+	</table>
+	<a class="btn btn-light" href="{{ path('application_index') }}">Retour à la Liste</a><br><br>
+	<a class="btn btn-light" href="{{ path('application_edit', {'id': application.id}) }}">Modifier</a>
+	{{ include('application/_delete_form.html.twig') }}
 {% endblock %}
