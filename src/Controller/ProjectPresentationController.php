@@ -75,4 +75,26 @@ class ProjectPresentationController extends AbstractController
     {
         return $this->render('project_presentation/answerTQ003.html.twig');
     }
+    /**
+     * @Route("/answerTQ004", name="project_presentation_answerTQ004", methods={"GET"})
+     */
+    public function answerTQ004(): Response
+    {
+        return $this->render('project_presentation/answerTQ004.html.twig');
+    }
+
+        /**
+     * @Route("/technology", name="project_presentation_technology", methods={"GET"})
+     */
+    public function technology(): Response
+    {
+        return $this->render('project_presentation/technology.html.twig');
+    }
+    /**
+     * @Route("/symfony", name="project_presentation_symfony", methods={"GET"})
+     */
+    public function symfony(): Response
+    {
+        return $this->render('project_presentation/symfony.html.twig');
+    }
 }

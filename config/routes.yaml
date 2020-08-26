@@ -71,3 +71,10 @@ project_presentation_answerTQ002:
 project_presentation_answerTQ003:
     path: /job_seekers_app/project/presentation/answerTQ003
     controller: App\Controller\ProjectPresentationController::answerTQ003
+project_presentation_answerTQ004:
+    path: /job_seekers_app/project/presentation/answerTQ004
+    controller: App\Controller\ProjectPresentationController::answerTQ004
+
+project_presentation_technology:
+    path: /job_seekers_app/project/presentation/technology
+    controller: App\Controller\ProjectPresentationController::technology

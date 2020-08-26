@@ -9,26 +9,45 @@
 	<ul>
 		<li>Introduction</li>
 		<li>Lexique</li>
-		<li><a href="{{ path('project_presentation_objectifs') }}">Objectif du Projet</a></li>
-        <li><a href="{{ path('project_presentation_needs') }}">Besoin du Publique : règles métiers</a></li>
+		<li>
+			<a href="{{ path('project_presentation_objectifs') }}">Objectif du Projet</a>
+		</li>
+		<li>
+			<a href="{{ path('project_presentation_needs') }}">Besoin du Publique : règles métiers</a>
+		</li>
 		<li>Mise en Oeuvre</li>
-		<ul><li><a href="{{ path('project_presentation_questionnaire') }}">Questionnaire Déstiné aux Utilisateurs</a></li>
-		<ul><li><a href="{{ path('project_presentation_answerTQ001') }}">Réponses au Questionnaire 001</a></li>
-		<li><a href="{{ path('project_presentation_answerTQ002') }}">Réponses au Questionnaire 002</a></li>
-		<li><a href="{{ path('project_presentation_answerTQ003') }}">Réponses au Questionnaire 003</a></li>
+		<ul>
+			<li>
+				<a href="{{path('project_presentation_technology')}}">Technologies</a>
+			</li>
+			<ul>
+				<li><a href="{{ path('project_presentation_symfony') }}">Symfony</a></li>
+				<li><a>twig</a></li>
+				<li><a>html</a></li>
+				<li><a>Java Scriipt</a></li>
+			</ul>
+			<li>
+				<a href="{{ path('project_presentation_questionnaire') }}">Questionnaire Déstiné aux Utilisateurs</a>
+			</li>
+			<ul>
+				<li><a href="{{path('project_presentation_answerTQ001')}}">Réponses au Questionnaire 001</a></li>
+				<li><a href="{{path('project_presentation_answerTQ002')}}">Réponses au Questionnaire 002</a></li>
+				<li><a href="{{path('project_presentation_answerTQ003')}}">Réponses au Questionnaire 003</a></li>
+				<li><a href="{{path('project_presentation_answerTQ004')}}">Réponses au Questionnaire 004</a></li>
+			</ul>
 		</ul>
-		</ul>
-		<li><a href="{{ path('project_presentation_features') }}">Liste des Fonctionalités</a></li>
-        <li>Backlog</li>
+		<li>
+			<a href="{{ path('project_presentation_features') }}">Liste des Fonctionalités</a>
+		</li>
+		<li>Backlog</li>
 		<li>Difficultés Attendues</li>
 		<li>Processus : liens entre les pages Répertoir>Détail d'un Contact</li>
-        <li>Architecture : shéma UML</li>
+		<li>Architecture : shéma UML</li>
 		<li>Description des écrans : court paragrphe décrivant toutes les fonctions de chaque écrans</li>
 		<li>Wireframe</li>
-        <li>Maquette</li>
-        <li>Les des champs : boutons, menue, liens zonde texte, titres</li>
-        <li>Règles de Validation d'Affichages</li>
-        <li>Tableau des Messages d'Erreurs</li>
+		<li>Maquette</li>
+		<li>Les des champs : boutons, menue, liens zonde texte, titres</li>
+		<li>Règles de Validation d'Affichages</li>
+		<li>Tableau des Messages d'Erreurs</li>
 	</ul>
-
 {% endblock %}
