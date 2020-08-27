@@ -1,34 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail de l'Entreprise{% endblock %}
+{% block title %}Détail de l'Entreprise
+{% endblock %}
 
 {% block body %}
-    <h1>Détail de l'Entreprise</h1>
+	<h1>Détail de l'Entreprise</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ company.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom de l'Entreprise</th>
-                <td>{{ company.companyName }}</td>
-            </tr>
-            <tr>
-                <th>Site WEB</th>
-                <td>{{ company.companyWEBSite }}</td>
-            </tr>
-            <tr>
-                <th>Commentaires</th>
-                <td>{{ company.comments }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Nom de l'Entreprise</th>
+				<td>{{ company.companyName }}</td>
+			</tr>
+			<tr>
+				<th>Site WEB</th>
+				<td>{{ company.companyWEBSite }}</td>
+			</tr>
+			<tr>
+				<th>Commentaires</th>
+				<td>{{ company.comments }}</td>
+			</tr>
+			<tr>
+				<th>Salariés</th>
+				<td>
+					{% for contact in company.contacts %}
+                        <a {#href="{{ path('contact_show', {'id': contact.id}) }}"#}>{{ contact.contactTitle ~" "~ contact.forName ~" "~ contact.sirName }}</a><br><br>
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('company_index') }}">Retour à la Liste</a>
+	<div class="btn btn-light btn-center" href="{{ path('company_index') }}">Retour à la Liste</div><br><br>
 
-    <a href="{{ path('company_edit', {'id': company.id}) }}">Modifier</a>
+	<div class="btn btn-light btn-center" href="{{ path('company_edit', {'id': company.id}) }}">Modifier</div><br><br>
 
-    {{ include('company/_delete_form.html.twig') }}
+	{{ include('company/_delete_form.html.twig') }}
 {% endblock %}

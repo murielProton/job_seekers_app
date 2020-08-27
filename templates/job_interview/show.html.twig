@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ job_interview.id }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
                 <td>{{ job_interview.dateOfInterview ? job_interview.dateOfInterview|date('d-m-Y') : '' }}</td>
             </tr>
@@ -26,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('job_interview_index') }}">Retour à la Liste</a>
+    <a class="btn btn-light" href="{{ path('job_interview_index') }}">Retour à la Liste</a><br><br>
 
-    <a href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">Modifier</a>
+    <a class="btn btn-light" href="{{ path('job_interview_edit', {'id': job_interview.id}) }}">Modifier</a><br><br>
 
     {{ include('job_interview/_delete_form.html.twig') }}
 {% endblock %}

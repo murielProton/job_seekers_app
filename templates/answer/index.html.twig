@@ -30,7 +30,10 @@
                 {#text de la réponse#}
                 <td class="text-center-horizontal">{{ answer.textOfAnswer }}</td>
                 {#Date de l'Entretien#}
-                <td {#class="text-center-horizontal">{{ jobInterview.dateOfInterview ? answer.date|date('d-m-Y') : '' }}#}</td>
+                <td class="text-center-horizontal">
+                {% if answer.jobInterview is defined and answer.jobInterview is not null %}
+                {{ answer.jobInterview.dateOfInterview ? answer.jobInterview.dateOfInterview|date('d-m-Y') : '' }}</td>
+                {% endif %}
                 </td>
                 <td class="text-center-horizontal">
                 {#boutons#}

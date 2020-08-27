@@ -65,6 +65,11 @@ class Contact
      */
     private $companies;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comment;
+
     public function __construct()
     {
         $this->companies = new ArrayCollection();
@@ -193,6 +198,18 @@ class Contact
         if ($this->companies->contains($company)) {
             $this->companies->removeElement($company);
         }
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }
