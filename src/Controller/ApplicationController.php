@@ -21,7 +21,7 @@ class ApplicationController extends AbstractController
      */
     public function slash()
     {
-        return $this->render('application/slash.html.twig', [
+        return $this->render('application/home.html.twig', [
             'controller_name' => 'ApplicationController',
         ]);
     }

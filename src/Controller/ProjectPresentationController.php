@@ -15,14 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProjectPresentationController extends AbstractController
 {
+    
     /**
-     * @Route("/tableOfContent", name="project_presentation_table_of_content", methods={"GET"})
+     * @Route("/intro", name="project_presentation_introduction", methods={"GET"})
+     */
+    public function introduction(): Response
+    {
+        return $this->render('project_presentation/introduction.html.twig');
+    }
+    /**
+     * @Route("/tableOfContent", name="project_presentation_toc", methods={"GET"})
      */
     public function tableOfContent(): Response
     {
         return $this->render('project_presentation/projectPresentationTOC.html.twig');
     }
-
+    
     /**
      * @Route("/objectifs", name="project_presentation_objectifs", methods={"GET"})
      */

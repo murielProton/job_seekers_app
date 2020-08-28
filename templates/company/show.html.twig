@@ -16,6 +16,13 @@
 				<th>Site WEB</th>
 				<td>{{ company.companyWEBSite }}</td>
 			</tr>
+						<tr>
+				<th>Adresse</th>
+				<td>{% if company.address is defined and company.address is not null %}
+						{{ company.address }}
+					{% endif %}
+					</td>
+			</tr>
 			<tr>
 				<th>Commentaires</th>
 				<td>{{ company.comments }}</td>

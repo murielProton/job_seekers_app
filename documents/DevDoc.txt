@@ -132,6 +132,11 @@ La base de donnée n'est pas à jour, ou les données sont mal ou pas enregistr�
 bin/console doctrine:schema:update
 || &&
 bin/console doctrine:schema:update --force
+Si pb de URL : URL unable to generat url for named rout "" as such does not exists.
+ php bin/console cache:clear
+ cela enlève les anciennes versions.
+ Pour vérifier les routes
+ php bin/console debug:router
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------DEBUGG---------------------------------------------------------
 //SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'text_of_answer' at row 1

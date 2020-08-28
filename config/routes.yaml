@@ -50,8 +50,8 @@ project_presentation_index:
     path: /job_seekers_app/project/presentation
     controller: App\Controller\ProjectPresentationController::index
 
-project_presentation_TOC:
-    path: /job_seekers_app/project/presentation/toc
+project_presentation_toc:
+    path: /job_seekers_app/project/presentation/tableOfContent
     controller: App\Controller\ProjectPresentationController::tableOfContent
 
 project_presentation_Objectifs:
