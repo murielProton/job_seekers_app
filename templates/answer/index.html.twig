@@ -11,6 +11,7 @@
             <tr>
                 <th data-sortable="true">Candidature</th>
                 <th data-sortable="true">Date</th>
+               {# <th data-sortable="true">Moyen de communication</th>#}
                 <th data-sortable="true">Réponse</th>
                 <th data-sortable="true">Date de l'Entretien</th>
                 <th>{#ne pas supprimer ce TH#}</th>
@@ -27,6 +28,8 @@
                 </td>
                 {#date de la réponse#}
                 <td class="text-center-horizontal">{{ answer.date ? answer.date|date('d-m-Y') : '' }}</td>
+                {#Moyen de communication#}
+
                 {#text de la réponse#}
                 <td class="text-center-horizontal">{{ answer.textOfAnswer }}</td>
                 {#Date de l'Entretien#}

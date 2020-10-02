@@ -23,7 +23,18 @@ class AnswerType extends AbstractType
                 'widget' => 'single_text',
                 'required'   => true
             ])
-            ->add('textOfAnswer',ChoiceType::class,[
+            ->add('means', ChoiceType::class, [
+                'choices' => [
+                    "Téléphone" => "Téléphone",
+                    "Couriel" => "Couriel",
+                    "Médias Sociaux" => "Médias Sociaux",
+                    "Méssagerie Instantanée" => "Méssagerie Instantanée",
+                    "Echange Vidéo" => "Echange Vidéo"
+                ],
+                'label' => "Moyen de communication",
+                'required' => false,
+            ])
+            ->add('textOfAnswer', ChoiceType::class, [
                 'choices'  => [
                     "Négative." => "Négative.",
                     "A recontacter." => "A recontacter.",
@@ -35,7 +46,7 @@ class AnswerType extends AbstractType
                 ],
                 'label' => "Réponse",
                 'required' => false,
-                ])
+            ])
             ->add('comments', TextareaType::class,  [
                 'label' => "Commentaires",
                 'required'   => false,
@@ -44,10 +55,9 @@ class AnswerType extends AbstractType
             ->add('application', EntityType::class, [
                 'class' => Application::class,
                 'choice_label' => "title",
-                'label'=> "Titre de la Candidature Associé*",
+                'label' => "Titre de la Candidature Associé*",
                 'required' => true,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

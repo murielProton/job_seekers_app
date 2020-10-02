@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Echange{% endblock %}
+
+{% block body %}
+    <h1>Modifier Echange</h1>
+
+    {{ include('exchange/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('exchange_index') }}">retour à la liste</a>
+
+    {{ include('exchange/_delete_form.html.twig') }}
+{% endblock %}

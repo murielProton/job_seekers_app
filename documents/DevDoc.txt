@@ -378,3 +378,9 @@ mappedBy et inversedBy sont liés il doivent pointer la même chose.
 // You can also provide a list of templates that are checked for existence. The first template that exists will be
 // used as a parent:
 {% extends ['base.html.twig', 'checklist.html.twig'] %}
+----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------Entity-------------------------------------------------------
+l'entité Exange est un echange qu'il soit dans le cadre privé et professionnel, il implique le thème de la recherche
+d'emploi. L'échange est un rapport d'une conversation ou d'un email en rapport avec la recherche d'emploi de l'utilisateur.
+Au contraire l'entité Answer est la réponse à un entretien ou à une candidature. Même si le contacte peut générer une
+Answer, l'Answer est différent de Exange.

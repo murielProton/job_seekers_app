@@ -25,6 +25,7 @@ class Answer
      */
     private $date;
 
+
     /**
      * @ORM\Column(type="string", length=1200, nullable=true)
      */
@@ -49,6 +50,11 @@ class Answer
      * @ORM\ManyToOne(targetEntity=Application::class, inversedBy="answer")
      */
     private $application;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $means;
 
     public function __construct()
     {
@@ -154,5 +160,17 @@ class Answer
     public function __toString()
     {
         return $this->textOfAnswer;
+    }
+
+    public function getMeans(): ?string
+    {
+        return $this->means;
+    }
+
+    public function setMeans(?string $means): self
+    {
+        $this->means = $means;
+
+        return $this;
     }
 }

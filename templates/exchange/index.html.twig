@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des Echanges{% endblock %}
+
+{% block body %}
+    <h1>Index des Echanges</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Schedule</th>
+                <th>Means</th>
+                <th>Comments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exchange in exchanges %}
+            <tr>
+                <td>{{ exchange.id }}</td>
+                <td>{{ exchange.date ? exchange.date|date('Y-m-d') : '' }}</td>
+                <td>{{ exchange.schedule ? exchange.schedule|date('H:i:s') : '' }}</td>
+                <td>{{ exchange.means }}</td>
+                <td>{{ exchange.comments }}</td>
+                <td>
+                    <a href="{{ path('exchange_show', {'id': exchange.id}) }}">show</a>
+                    <a href="{{ path('exchange_edit', {'id': exchange.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('exchange_new') }}">Create new</a>
+{% endblock %}
