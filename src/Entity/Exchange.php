@@ -37,6 +37,11 @@ class Exchange
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=JobInterview::class, inversedBy="exchange")
+     */
+    private $jobInterview;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Exchange
     public function setComments(?string $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getJobInterview(): ?JobInterview
+    {
+        return $this->jobInterview;
+    }
+
+    public function setJobInterview(?JobInterview $jobInterview): self
+    {
+        $this->jobInterview = $jobInterview;
 
         return $this;
     }

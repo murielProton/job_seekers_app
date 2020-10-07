@@ -6,6 +6,7 @@ use App\Entity\JobInterview;
 use App\Entity\Company;
 use App\Entity\Address;
 use App\Entity\Application;
+use App\Entity\Exchange;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,6 +37,12 @@ class JobInterviewType extends AbstractType
                 'required' => false, 
             ])*/
 
+            ->add('exchange', EntityType::class, [
+                'class' => Exchange::class,
+                'choice_label' => "date",
+                'label'=> "Date de l'entretien*",
+                'required' => true, 
+            ])
             ->add('application', EntityType::class, [
                 'class' => Application::class,
                 'choice_label' => "title",

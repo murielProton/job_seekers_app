@@ -133,6 +133,8 @@ bin/console doctrine:schema:update
 || &&
 bin/console doctrine:schema:update --force
 Si pb de URL : URL unable to generat url for named rout "" as such does not exists.
+||
+[...]failed to open stream: No such file or directory
  php bin/console cache:clear
  cela enlève les anciennes versions.
  Pour vérifier les routes
@@ -384,3 +386,6 @@ l'entité Exange est un echange qu'il soit dans le cadre privé et professionnel
 d'emploi. L'échange est un rapport d'une conversation ou d'un email en rapport avec la recherche d'emploi de l'utilisateur.
 Au contraire l'entité Answer est la réponse à un entretien ou à une candidature. Même si le contacte peut générer une
 Answer, l'Answer est différent de Exange.
+----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------ONE TO Many-------------------------------------------------------
+Entity of type "Doctrine\Common\Collections\ArrayCollection" passed to the choice field must be managed. Maybe you forget to persist it in the entity manager?
