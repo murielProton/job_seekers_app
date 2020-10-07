@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Echange{% endblock %}
+{% block title %}Exchange{% endblock %}
 
 {% block body %}
-    <h1>Echange</h1>
+    <h1>Exchange</h1>
 
     <table class="table">
         <tbody>
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Schedule</th>
-                <td>{{ exchange.schedule ? exchange.schedule|date('H:i:s') : '' }}</td>
+                <td>{{ exchange.schedule ? exchange.schedule|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Means</th>
@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('exchange_index') }}">Retour à la liste</a>
+    <a href="{{ path('exchange_index') }}">back to list</a>
 
-    <a href="{{ path('exchange_edit', {'id': exchange.id}) }}">Modifier</a>
+    <a href="{{ path('exchange_edit', {'id': exchange.id}) }}">edit</a>
 
     {{ include('exchange/_delete_form.html.twig') }}
 {% endblock %}

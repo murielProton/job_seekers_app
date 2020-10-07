@@ -6,7 +6,7 @@ use App\Repository\ExchangeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ExangeRepository::class)
+ * @ORM\Entity(repositoryClass=ExchangeRepository::class)
  */
 class Exchange
 {
@@ -18,17 +18,17 @@ class Exchange
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $schedule;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $means;
 
@@ -47,7 +47,7 @@ class Exchange
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -71,13 +71,12 @@ class Exchange
         return $this->means;
     }
 
-    public function setMeans(string $means): self
+    public function setMeans(?string $means): self
     {
         $this->means = $means;
 
         return $this;
     }
-
 
     public function getComments(): ?string
     {

@@ -42,6 +42,10 @@ contact_new:
     path: /job_seekers_app/new/contact
     controller: App\Controller\ContactController::new
 
+exchange_new:
+    path: /job_seekers_app/exchange/new
+    controller: App\Controller\ExchangeController::new
+
 job_interview_new:
     path: /job_seekers_app/new/job_interview
     controller: App\Controller\JobInterviewController::new

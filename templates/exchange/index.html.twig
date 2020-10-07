@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index des Echanges{% endblock %}
+{% block title %}Exchange index{% endblock %}
 
 {% block body %}
-    <h1>Index des Echanges</h1>
+    <h1>Exchange index</h1>
 
     <table class="table">
         <thead>
@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ exchange.id }}</td>
                 <td>{{ exchange.date ? exchange.date|date('Y-m-d') : '' }}</td>
-                <td>{{ exchange.schedule ? exchange.schedule|date('H:i:s') : '' }}</td>
+                <td>{{ exchange.schedule ? exchange.schedule|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ exchange.means }}</td>
                 <td>{{ exchange.comments }}</td>
                 <td>
