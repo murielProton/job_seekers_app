@@ -9,7 +9,7 @@ class UserType extends AbstractType {
         ])
         ->add('roles', ChoiceType::class, [
             'multiple'=>true,
-            'expanded'=> true,
+            'expanded'=> true, //pour faire des boutons radio dans un choix multiple
             'choices' => [
                 'Creator' => 'ROLE_CREATOR',
                 'Moderator' => 'ROLE_CREATOR',
@@ -22,3 +22,7 @@ class UserType extends AbstractType {
 
     }
 }
+
+{%  if is_granted('ROLE_USER') %}
+ // afficher dans le twig
+{% endif %}

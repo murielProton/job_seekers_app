@@ -82,3 +82,7 @@ project_presentation_answerTQ004:
 project_presentation_technology:
     path: /job_seekers_app/project/presentation/technology
     controller: App\Controller\ProjectPresentationController::technology
+
+user_new:
+    path: /job_seekers_app/new/acount
+    controller: App\Controller\UserController::new

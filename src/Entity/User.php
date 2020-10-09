@@ -45,14 +45,19 @@ class User implements UserInterface
     private $phoneNumber;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="array", length=20, nullable=true)
      */
-    private $currentWorkTitle;
+    private $currentWorkTitle = [];
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="array", length=20)
      */
-    private $targetedWorkTitle;
+    private $targetedWorkTitle = [];
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $whereOu = [];
 
     public function getId(): ?int
     {
@@ -151,26 +156,38 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCurrentWorkTitle(): ?string
+    public function getCurrentWorkTitle(): ?array
     {
         return $this->currentWorkTitle;
     }
 
-    public function setCurrentWorkTitle(?string $currentWorkTitle): self
+    public function setCurrentWorkTitle(?array $currentWorkTitle): self
     {
         $this->currentWorkTitle = $currentWorkTitle;
 
         return $this;
     }
 
-    public function getTargetedWorkTitle(): ?string
+    public function getTargetedWorkTitle(): ?array
     {
         return $this->targetedWorkTitle;
     }
 
-    public function setTargetedWorkTitle(string $targetedWorkTitle): self
+    public function setTargetedWorkTitle(?array $targetedWorkTitle): self
     {
         $this->targetedWorkTitle = $targetedWorkTitle;
+
+        return $this;
+    }
+
+    public function getWhereOu(): ?array
+    {
+        return $this->whereOu;
+    }
+
+    public function setWhereOu(?array $whereOu): self
+    {
+        $this->whereOu = $whereOu;
 
         return $this;
     }

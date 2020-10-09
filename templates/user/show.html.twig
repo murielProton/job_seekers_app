@@ -1,50 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Compte Utilisateur
+{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+	<h1>Compte Utilisateur</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>UserName</th>
-                <td>{{ user.userName }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>EMail</th>
-                <td>{{ user.eMail }}</td>
-            </tr>
-            <tr>
-                <th>PhoneNumber</th>
-                <td>{{ user.phoneNumber }}</td>
-            </tr>
-            <tr>
-                <th>CurrentWorkTitle</th>
-                <td>{{ user.currentWorkTitle }}</td>
-            </tr>
-            <tr>
-                <th>TargetedWorkTitle</th>
-                <td>{{ user.targetedWorkTitle }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Nom ou Pseudonyme</th>
+				<td>{{ user.userName }}</td>
+			</tr>
+			<tr>
+				<th>Rôles</th>
+				<td>
+					{%  if is_granted('ROLE_USER') %}
+						{% for item in user.roles %}
+							<li>{{ item }}</li>
+						{% endfor %}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th>Mot de Passe</th>
+				<td>{{ user.password }}</td>
+			</tr>
+			<tr>
+				<th>Adresse Couriel</th>
+				<td>{{ user.eMail }}</td>
+			</tr>
+			<tr>
+				<th>Numéro de Téléphone</th>
+				<td>{{ user.phoneNumber }}</td>
+			</tr>
+			<tr>
+				<th>Titre des Postes Passés</th>
+				<td>
+					{% for item in user.currentWorkTitle %}
+						<li>{{ item }}</li>
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Titre du Poste Visé</th>
+				<td>
+					{% for item in user.targetedWorkTitle %}
+						<li>{{ item }}</li>
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Où ?</th>
+				<td>
+					{% for item in user.whereOu %}
+						<li>{{ item }}</li>
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+	<a href="{{ path('user_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+	<a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
 
-    {{ include('user/_delete_form.html.twig') }}
+	{{ include('user/_delete_form.html.twig') }}
 {% endblock %}
