@@ -1,0 +1,37 @@
+
+------------------------------------@Route------------------------------------
+Concerne les fichiers
+/home/proton/Epitech/Rendu/job_seekers_app/config/routes/routes.yaml
+/home/proton/Epitech/Rendu/job_seekers_app/src/Controller/**X**Controller.php
+Utilisation
+Le controlleur peut avoir un lien entre le nom de la route dans routes.yaml et le chemin URL.
+exemple
+/**
+ * @Route("/", name="exchange_index", methods={"GET"})
+ */
+ ici l'URL "/" conduit au chemin de routes.yaml "exchange_index"
+------------------------------------------------------------------------------------------------
+------------------------------------@ParamConverter------------------------------------
+Concerne les fichiers
+/home/proton/Epitech/Rendu/job_seekers_app/src/Controller/**X**Controller.php
+Utilisation 
+pour convertir une requête en un objet
+exemple
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+/**
+ * @Route("/blog/{id}")
+ * @ParamConverter("post", class="SensioBlogBundle:Post")
+ */
+public function show(Post $post)
+{
+}
+je converti la requête post en un objet Post
+doc officielle
+https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html
+------------------------------------------------------------------------------------------------
+------------------------------------@Param------------------------------------
+
+------------------------------------------------------------------------------------------------
+------------------------------------@return------------------------------------

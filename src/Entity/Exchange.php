@@ -38,7 +38,7 @@ class Exchange
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity=JobInterview::class, inversedBy="exchange")
+     * @ORM\OneToOne(targetEntity=JobInterview::class, inversedBy="exchange", cascade={"persist", "remove"})
      */
     private $jobInterview;
 

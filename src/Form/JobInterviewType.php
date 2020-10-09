@@ -24,32 +24,25 @@ class JobInterviewType extends AbstractType
     {
         $builder
 
-            /*->add('company', EntityType::class, [
+            ->add('company', EntityType::class, [
                 'class' => Company::class,
                 'choice_label' => "companyName",
-                'label' => "Nom de l'Entreprise",
-                'required'   => false
+                'label'=> "Nom de l'Entreprise",
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false
             ])
-            ->add('answer', EntityType::class, [
-                'class' => Answer::class,
-                'choice_label' => "date", 
-                'label'=> "Réponse",
-                'required' => false, 
-            ])*/
-
             ->add('exchange', EntityType::class, [
                 'class' => Exchange::class,
-                'choice_label' => "date",
-                'label'=> "Date de l'entretien*",
-                'required' => true, 
+                'choice_label' => 'Exchange',
+                'required' => true,
             ])
             ->add('application', EntityType::class, [
                 'class' => Application::class,
                 'choice_label' => "title",
-                'label'=> "Titre de la Candidature Associé*",
-                'required' => true, 
-            ])
-        ;
+                'label' => "Titre de la Candidature Associé*",
+                'required' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

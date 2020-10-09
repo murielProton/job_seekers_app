@@ -30,7 +30,7 @@ class JobInterview
     private $application;
 
     /**
-     * @ORM\OneToMany(targetEntity=Exchange::class, mappedBy="jobInterview", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Exchange::class, mappedBy="jobInterview", cascade={"persist", "remove"})
      */
     private $exchange;
 

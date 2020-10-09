@@ -1,0 +1,24 @@
+VIDÉO YOUTUBE SYMFONY 3 TUTORIAL: DYNAMIC USER ROLES 19:52 
+class UserType extends AbstractType {
+    public function buildForm(FormBuilderInterface $builder, array $options){
+        $builder
+        ->add('username', TextType::class)
+        ->add('email', EmailType::class)
+        ->add('password', RepeatedType::class, [
+            'type'=> PasswordType::class
+        ])
+        ->add('roles', ChoiceType::class, [
+            'multiple'=>true,
+            'expanded'=> true,
+            'choices' => [
+                'Creator' => 'ROLE_CREATOR',
+                'Moderator' => 'ROLE_CREATOR',
+                'Admin' => 'ROLE_ADMIN',
+
+            ]
+        ])
+
+        ->add('username', TextType::class)
+
+    }
+}
