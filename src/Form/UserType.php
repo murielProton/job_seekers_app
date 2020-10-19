@@ -35,27 +35,12 @@ class UserType extends AbstractType
                     "en recherche d'emploi." => 'ROLE_USER',
                     "Developpeur." => 'ROLE_DEV',
                     "Administrateur." => 'ROLE_ADMIN',
-
                 ]
             ])
             ->add('password', PasswordType::class, [
                 //'sub label' => "obligatoire et entre 6 et 20 charactères",
                 'label' => "Mot de passe*",
-
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 20,
-                    ]),
-                ],
+                'required' => true 
             ])
             ->add('eMail', EmailType::class, [
                 'label' => "Adresse courriel",

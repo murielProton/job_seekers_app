@@ -37,9 +37,9 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            $entityManager->flush();
+            $entityManager->flush();//!?SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'password' cannot be null
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('user/new.html.twig', [
