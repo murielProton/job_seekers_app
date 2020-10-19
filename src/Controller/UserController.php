@@ -32,7 +32,7 @@ class UserController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request);//!?erreur Expected argument of type "array or null", "string" given at property path "targetedWorkTitle".
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

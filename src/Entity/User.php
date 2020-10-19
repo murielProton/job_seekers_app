@@ -45,9 +45,9 @@ class User implements UserInterface
     private $phoneNumber;
 
     /**
-     * @ORM\Column(type="array", length=20, nullable=true)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
-    private $currentWorkTitle = [];
+    private $currentWorkTitle;
 
     /**
      * @ORM\Column(type="array", length=20)
@@ -156,12 +156,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCurrentWorkTitle(): ?array
+    public function getCurrentWorkTitle(): ?string
     {
         return $this->currentWorkTitle;
     }
 
-    public function setCurrentWorkTitle(?array $currentWorkTitle): self
+    public function setCurrentWorkTitle(?string $currentWorkTitle): self
     {
         $this->currentWorkTitle = $currentWorkTitle;
 
