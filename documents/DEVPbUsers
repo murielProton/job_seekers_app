@@ -1,0 +1,47 @@
+An exception occurred while executing 'INSERT INTO user (user_name, roles, password, e_mail, phone_number, current_work_title, targeted_work_title, where_ou) VALUES (?, ?, ?, ?, ?, ?, ?, ?)' with params ["admin", "[\"ROLE_USER\",\"ROLE_DEV\",\"ROLE_ADMIN\"]", null, "administrateur@admin.fr", 1020304050, "D\u00e9veloppeur", "a:0:{}", "a:0:{}"]:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'password' cannot be null
+
+SOLUTION ???
+Commandes symfony
+composer require orm-fixtures --dev
+php bin/console make:fixtures
+The class name of the fixtures to create (e.g. AppFixtures):
+UsersDumy
+php bin/console doctrine:fixtures:load
+Careful, database "job_seekers_app" will be purged. Do you want to continue? (yes/no) [no]:
+ > yes
+
+Ajouter des lignes de codes à src/DataFixtures/UsersDumy.php
+>>>
+<?php
+
+namespace App\DataFixtures;
+
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\User;
+
+class UsersDumy extends Fixture
+{
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+    public function load(ObjectManager $manager)
+    {
+        $user = new User();
+
+        // $manager->persist($product);
+        $user->setPassword($this->passwordEncoder->encodePassword($user,'the_new_password'));
+        //$manager->flush();
+    }
+}
+>>>
+
+php bin/console security:encode-password
+
+3b) Authenticating your Users¶
